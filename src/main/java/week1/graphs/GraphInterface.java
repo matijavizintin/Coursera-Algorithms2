@@ -7,14 +7,14 @@ package week1.graphs;
  */
 public interface GraphInterface {
     // add an edge from v to w
-    public void addEdge(int v, int w);
+    void addEdge(int v, int w);
 
     // vertices adjacent to v
-    public Iterable<Integer> adjacent(int v);
+    Iterable<Integer> adjacent(int v);
 
     // number of vertices
-    public int vertices();
+    int vertices();
 
     // number of edges
-    public int edges();
+    int edges();
 }

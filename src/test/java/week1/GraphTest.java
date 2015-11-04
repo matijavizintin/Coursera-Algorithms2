@@ -13,7 +13,6 @@ import java.lang.reflect.InvocationTargetException;
  * Time: 21:42
  */
 public class GraphTest {
-
     @Test
     public void simpleGraphTest() {
         GraphInterface graph = buildSimpleGraph(Graph.class);
