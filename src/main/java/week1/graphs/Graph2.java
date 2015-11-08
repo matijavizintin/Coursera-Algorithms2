@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * Date: 03. 11. 2015
  * Time: 21:30
  */
-public class Graph2 implements GraphInterface {
+public class Graph2 implements Graph {
     private final int verticesCount;
     private int edgesCount = 0;
 
