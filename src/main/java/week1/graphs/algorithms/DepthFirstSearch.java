@@ -9,14 +9,12 @@ import week1.graphs.Graph;
  */
 public class DepthFirstSearch {
     private Graph graph;
-    private int source;
 
     public boolean[] marked;        // getters for arrays are so annoying
     public int[] edgeTo;
 
     public DepthFirstSearch(Graph graph, int source) {
         this.graph = graph;
-        this.source = source;
 
         // init structures
         marked = new boolean[graph.vertices()];
