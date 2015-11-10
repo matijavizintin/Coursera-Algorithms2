@@ -16,11 +16,11 @@ public class Path {
 
     private DepthFirstSearch dfs;
 
-    public Path(UnidirectedGraph unidirectedGraph, int source) {
+    public Path(UndirectedGraph undirectedGraph, int source) {
         this.source = source;
 
-        // perform DFS on unidirectedGraph
-        dfs = new DepthFirstSearch(unidirectedGraph, source);
+        // perform DFS on undirectedGraph
+        dfs = new DepthFirstSearch(undirectedGraph, source);
     }
 
     // returns true if there is a path from s to v

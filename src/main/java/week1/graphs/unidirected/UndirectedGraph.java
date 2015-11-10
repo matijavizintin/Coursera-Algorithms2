@@ -5,7 +5,7 @@ package week1.graphs.unidirected;
  * Date: 03. 11. 2015
  * Time: 21:30
  */
-public interface UnidirectedGraph {
+public interface UndirectedGraph {
 
     // add an edge from v to w
     void addEdge(int v, int w);

@@ -13,17 +13,17 @@ import java.util.Map;
  * Date: 03. 11. 2015
  * Time: 21:30
  */
-public class UnidirectedGraph1 implements UnidirectedGraph {
+public class UndirectedGraph1 implements UndirectedGraph {
     private int verticesCount = 0;
     private int edgesCount = 0;
 
     private Map<Integer, Collection<Integer>> edges = new HashMap<>();
 
-    public UnidirectedGraph1(int v) {
+    public UndirectedGraph1(int v) {
 
     }
 
-    public UnidirectedGraph1(InputStream in) {
+    public UndirectedGraph1(InputStream in) {
 
     }
 
