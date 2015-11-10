@@ -8,13 +8,13 @@ import java.util.LinkedList;
  * Date: 03. 11. 2015
  * Time: 21:30
  */
-public class UndirectedGraph2 implements UndirectedGraph {
+public class UndirectedGraphImpl2 implements UndirectedGraph {
     private final int verticesCount;
     private int edgesCount = 0;
 
     private LinkedList<Integer>[] adj;
 
-    public UndirectedGraph2(int v) {
+    public UndirectedGraphImpl2(int v) {
         verticesCount = v;
         adj = (LinkedList<Integer>[]) new LinkedList[v];
 
@@ -23,7 +23,7 @@ public class UndirectedGraph2 implements UndirectedGraph {
         }
     }
 
-    public UndirectedGraph2(InputStream in) {
+    public UndirectedGraphImpl2(InputStream in) {
         verticesCount = 0;
     }
 

@@ -5,8 +5,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import week1.graphs.unidirected.Path;
 import week1.graphs.unidirected.UndirectedGraph;
-import week1.graphs.unidirected.UndirectedGraph1;
-import week1.graphs.unidirected.UndirectedGraph2;
+import week1.graphs.unidirected.UndirectedGraphImpl1;
+import week1.graphs.unidirected.UndirectedGraphImpl2;
 import week1.graphs.unidirected.algorithms.BreadthFirstSearch;
 import week1.graphs.unidirected.algorithms.ConnectedComponents;
 
@@ -18,9 +18,10 @@ import java.lang.reflect.InvocationTargetException;
  * Time: 21:42
  */
 public class UndirectedGraphTest {
+
     @Test
     public void simpleGraphTest() {
-        UndirectedGraph undirectedGraph = buildSimpleGraph(UndirectedGraph1.class);
+        UndirectedGraph undirectedGraph = buildSimpleGraph(UndirectedGraphImpl1.class);
 
         String string = undirectedGraph.toString();
         System.out.println(string);
@@ -28,7 +29,7 @@ public class UndirectedGraphTest {
 
     @Test
     public void simpleGraphTest1() {
-        UndirectedGraph undirectedGraph = buildSimpleGraph(UndirectedGraph2.class);
+        UndirectedGraph undirectedGraph = buildSimpleGraph(UndirectedGraphImpl2.class);
 
         String string = undirectedGraph.toString();
         System.out.println(string);
@@ -112,7 +113,7 @@ public class UndirectedGraphTest {
      * @return      UndirectedGraph
      */
     private UndirectedGraph buildGraph() {
-        UndirectedGraph undirectedGraph = new UndirectedGraph1(7);
+        UndirectedGraph undirectedGraph = new UndirectedGraphImpl1(7);
 
         undirectedGraph.addEdge(0, 1);
         undirectedGraph.addEdge(0, 3);
@@ -127,7 +128,7 @@ public class UndirectedGraphTest {
     }
 
     public UndirectedGraph buildGraphForConnectedComponents() {
-        UndirectedGraph undirectedGraph = new UndirectedGraph1(13);
+        UndirectedGraph undirectedGraph = new UndirectedGraphImpl1(13);
 
         undirectedGraph.addEdge(0, 1);
         undirectedGraph.addEdge(0, 2);
