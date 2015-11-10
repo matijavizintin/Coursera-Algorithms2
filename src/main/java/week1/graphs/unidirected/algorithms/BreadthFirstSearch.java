@@ -1,6 +1,6 @@
-package week1.graphs.algorithms;
+package week1.graphs.unidirected.algorithms;
 
-import week1.graphs.Graph;
+import week1.graphs.unidirected.UnidirectedGraph;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -15,16 +15,16 @@ public class BreadthFirstSearch {
     public int[] edgeTo;
     public int[] distTo;
 
-    public BreadthFirstSearch(Graph graph, int source) {
-        marked = new boolean[graph.vertices()];
-        edgeTo = new int[graph.vertices()];
-        distTo = new int[graph.vertices()];
+    public BreadthFirstSearch(UnidirectedGraph unidirectedGraph, int source) {
+        marked = new boolean[unidirectedGraph.vertices()];
+        edgeTo = new int[unidirectedGraph.vertices()];
+        distTo = new int[unidirectedGraph.vertices()];
 
-        visit(graph, source);
+        visit(unidirectedGraph, source);
     }
 
-    // remove all nodes from a graph using BFS
-    public void visit(Graph graph, int start) {
+    // remove all nodes from a unidirectedGraph using BFS
+    public void visit(UnidirectedGraph unidirectedGraph, int start) {
 
         // add first element to a queue
         Queue<Integer> queue = new ArrayDeque<>();
@@ -37,7 +37,7 @@ public class BreadthFirstSearch {
             Integer vertex = queue.poll();
 
             // go through adjacent
-            Iterable<Integer> adjacent = graph.adjacent(vertex);
+            Iterable<Integer> adjacent = unidirectedGraph.adjacent(vertex);
             for (Integer adj : adjacent) {
 
                 // if not visited add to q

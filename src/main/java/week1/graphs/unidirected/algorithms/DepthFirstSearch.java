@@ -1,6 +1,6 @@
-package week1.graphs.algorithms;
+package week1.graphs.unidirected.algorithms;
 
-import week1.graphs.Graph;
+import week1.graphs.unidirected.UnidirectedGraph;
 
 /**
  * Created by Matija Vižintin
@@ -8,17 +8,17 @@ import week1.graphs.Graph;
  * Time: 19:35
  */
 public class DepthFirstSearch {
-    private Graph graph;
+    private UnidirectedGraph unidirectedGraph;
 
     public boolean[] marked;        // getters for arrays are so annoying
     public int[] edgeTo;
 
-    public DepthFirstSearch(Graph graph, int source) {
-        this.graph = graph;
+    public DepthFirstSearch(UnidirectedGraph unidirectedGraph, int source) {
+        this.unidirectedGraph = unidirectedGraph;
 
         // init structures
-        marked = new boolean[graph.vertices()];
-        edgeTo = new int[graph.vertices()];
+        marked = new boolean[unidirectedGraph.vertices()];
+        edgeTo = new int[unidirectedGraph.vertices()];
 
         depthFirstSearch(source);
     }
@@ -28,7 +28,7 @@ public class DepthFirstSearch {
         marked[vertex] = true;
 
         // go through all adjacent
-        Iterable<Integer> adjacent = graph.adjacent(vertex);
+        Iterable<Integer> adjacent = unidirectedGraph.adjacent(vertex);
         for (Integer adj : adjacent) {
             // if not marked recursively go into vertex
             if (!marked[adj]) {

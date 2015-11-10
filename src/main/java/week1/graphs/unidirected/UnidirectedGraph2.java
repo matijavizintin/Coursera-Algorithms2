@@ -1,4 +1,4 @@
-package week1.graphs;
+package week1.graphs.unidirected;
 
 import java.io.InputStream;
 import java.util.LinkedList;
@@ -8,13 +8,13 @@ import java.util.LinkedList;
  * Date: 03. 11. 2015
  * Time: 21:30
  */
-public class Graph2 implements Graph {
+public class UnidirectedGraph2 implements UnidirectedGraph {
     private final int verticesCount;
     private int edgesCount = 0;
 
     private LinkedList<Integer>[] adj;
 
-    public Graph2(int v) {
+    public UnidirectedGraph2(int v) {
         verticesCount = v;
         adj = (LinkedList<Integer>[]) new LinkedList[v];
 
@@ -23,7 +23,7 @@ public class Graph2 implements Graph {
         }
     }
 
-    public Graph2(InputStream in) {
+    public UnidirectedGraph2(InputStream in) {
         verticesCount = 0;
     }
 

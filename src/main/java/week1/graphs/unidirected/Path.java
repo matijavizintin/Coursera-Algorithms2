@@ -1,6 +1,6 @@
-package week1.graphs;
+package week1.graphs.unidirected;
 
-import week1.graphs.algorithms.DepthFirstSearch;
+import week1.graphs.unidirected.algorithms.DepthFirstSearch;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,11 +16,11 @@ public class Path {
 
     private DepthFirstSearch dfs;
 
-    public Path(Graph graph, int source) {
+    public Path(UnidirectedGraph unidirectedGraph, int source) {
         this.source = source;
 
-        // perform DFS on graph
-        dfs = new DepthFirstSearch(graph, source);
+        // perform DFS on unidirectedGraph
+        dfs = new DepthFirstSearch(unidirectedGraph, source);
     }
 
     // returns true if there is a path from s to v

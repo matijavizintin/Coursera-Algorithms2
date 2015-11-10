@@ -1,11 +1,11 @@
-package week1.graphs;
+package week1.graphs.unidirected;
 
 /**
  * Created by Matija Vižintin
  * Date: 03. 11. 2015
  * Time: 21:30
  */
-public interface Graph {
+public interface UnidirectedGraph {
 
     // add an edge from v to w
     void addEdge(int v, int w);

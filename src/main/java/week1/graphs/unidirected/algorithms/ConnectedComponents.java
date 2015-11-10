@@ -1,6 +1,6 @@
-package week1.graphs.algorithms;
+package week1.graphs.unidirected.algorithms;
 
-import week1.graphs.Graph;
+import week1.graphs.unidirected.UnidirectedGraph;
 
 /**
  * Created by Matija Vižintin
@@ -8,17 +8,17 @@ import week1.graphs.Graph;
  * Time: 20:57
  */
 public class ConnectedComponents {
-    private Graph graph;
+    private UnidirectedGraph unidirectedGraph;
 
     public boolean[] marked;
     public int[] cc;
 
-    public ConnectedComponents(Graph graph) {
-        this.graph = graph;
+    public ConnectedComponents(UnidirectedGraph unidirectedGraph) {
+        this.unidirectedGraph = unidirectedGraph;
 
         // init structures
-        marked = new boolean[graph.vertices()];
-        cc = new int[graph.vertices()];
+        marked = new boolean[unidirectedGraph.vertices()];
+        cc = new int[unidirectedGraph.vertices()];
 
         int index = 0;
         for (int i = 0; i < marked.length; i++) {
@@ -38,7 +38,7 @@ public class ConnectedComponents {
         cc[vertex] = ccIndex;
 
         // go through all adjacent
-        for (Integer adj : graph.adjacent(vertex)) {
+        for (Integer adj : unidirectedGraph.adjacent(vertex)) {
             // if not marked recursively go into vertex
             if (!marked[adj]) {
                 depthFirstSearch(adj, ccIndex);
@@ -51,7 +51,7 @@ public class ConnectedComponents {
     }
 
     public int count() {
-        return graph.vertices();
+        return unidirectedGraph.vertices();
     }
 
     // id of set of vertices

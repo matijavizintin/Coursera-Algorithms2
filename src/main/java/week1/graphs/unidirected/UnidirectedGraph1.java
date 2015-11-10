@@ -1,4 +1,4 @@
-package week1.graphs;
+package week1.graphs.unidirected;
 
 import com.google.common.collect.ImmutableList;
 
@@ -13,17 +13,17 @@ import java.util.Map;
  * Date: 03. 11. 2015
  * Time: 21:30
  */
-public class Graph1 implements Graph {
+public class UnidirectedGraph1 implements UnidirectedGraph {
     private int verticesCount = 0;
     private int edgesCount = 0;
 
     private Map<Integer, Collection<Integer>> edges = new HashMap<>();
 
-    public Graph1(int v) {
+    public UnidirectedGraph1(int v) {
 
     }
 
-    public Graph1(InputStream in) {
+    public UnidirectedGraph1(InputStream in) {
 
     }
 
