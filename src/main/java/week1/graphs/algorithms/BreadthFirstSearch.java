@@ -15,10 +15,15 @@ public class BreadthFirstSearch {
     public int[] edgeTo;
     public int[] distTo;
 
-    public BreadthFirstSearch(Graph graph) {
+    protected BreadthFirstSearch(Graph graph) {
         marked = new boolean[graph.vertices()];
-        edgeTo = new int[graph.vertices()];
         distTo = new int[graph.vertices()];
+        edgeTo = new int[graph.vertices()];
+
+        // init edge to
+        for (int i = 0; i < graph.vertices(); i++) {
+            edgeTo[i] = i;
+        }
     }
 
     public BreadthFirstSearch(Graph graph, int source) {
@@ -27,7 +32,7 @@ public class BreadthFirstSearch {
         visit(graph, source);
     }
 
-    public void visit(Graph graph, int start) {
+    private void visit(Graph graph, int start) {
         // add first element to a queue
         Queue<Integer> queue = new ArrayDeque<>();
         queue.add(start);

@@ -1,7 +1,10 @@
 package week1;
 
+import com.google.common.collect.ImmutableList;
+import org.junit.Assert;
 import org.junit.Test;
 import week1.graphs.Graph;
+import week1.graphs.algorithms.MultiSourceBFS;
 import week1.graphs.directed.DirectGraphImpl;
 
 /**
@@ -21,7 +24,18 @@ public class DirectedGraphTest {
 
     @Test
     public void multiSourceBFSTest() {
+        Graph graph = GraphBuilder.buildGraph(DirectGraphImpl.class);
 
+        MultiSourceBFS mbfs = new MultiSourceBFS(graph, ImmutableList.of(0, 1, 2));
+
+        // assert all marked
+        Assert.assertArrayEquals(mbfs.marked, new boolean[] {true, true, true, true, true, true, true});
+
+        // assert all paths 1
+        Assert.assertArrayEquals(mbfs.distTo, new int[]{0, 0, 0, 1, 1, 1, 1});
+
+        // assert edges
+        Assert.assertArrayEquals(mbfs.edgeTo, new int[]{0, 1, 2, 0, 0, 0, 2});
     }
 
 }

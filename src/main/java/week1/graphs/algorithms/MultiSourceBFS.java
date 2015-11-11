@@ -18,7 +18,7 @@ public class MultiSourceBFS extends BreadthFirstSearch {
         visit(graph, nodes);
     }
 
-    public void visit(Graph graph, Iterable<Integer> nodes) {
+    private void visit(Graph graph, Iterable<Integer> nodes) {
         // add elements to a queue
         Queue<Integer> queue = new ArrayDeque<>();
         for (Integer node : nodes) {
