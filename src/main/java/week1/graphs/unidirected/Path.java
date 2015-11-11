@@ -1,6 +1,7 @@
 package week1.graphs.unidirected;
 
-import week1.graphs.unidirected.algorithms.DepthFirstSearch;
+import week1.graphs.Graph;
+import week1.graphs.algorithms.DepthFirstSearch;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +17,7 @@ public class Path {
 
     private DepthFirstSearch dfs;
 
-    public Path(UndirectedGraph undirectedGraph, int source) {
+    public Path(Graph undirectedGraph, int source) {
         this.source = source;
 
         // perform DFS on undirectedGraph

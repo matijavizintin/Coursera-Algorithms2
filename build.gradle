@@ -14,6 +14,8 @@ dependencies {
   testCompile "junit:junit:4.12"
 }
 
+// junit works just fine
+/*
 test {
   // listen to events in the test execution lifecycle
   beforeTest { descriptor ->
@@ -25,3 +27,4 @@ test {
     logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
   }
 }
+*/

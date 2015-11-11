@@ -29,7 +29,7 @@ public class DirectGraphImpl implements DirectedGraph {
     }
 
     @Override
-    public Iterable<Integer> adj(int v) {
+    public Iterable<Integer> adjacent(int v) {
         return adjacent[v];
     }
 
@@ -58,8 +58,8 @@ public class DirectGraphImpl implements DirectedGraph {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (int v = 0; v < vertices; v++) {
-            for (Integer w : adj(v)) {
-                stringBuilder.append(v).append(" -> ").append(w);
+            for (Integer w : adjacent(v)) {
+                stringBuilder.append(v).append(" -> ").append(w).append("\n");
             }
         }
         return stringBuilder.toString();
