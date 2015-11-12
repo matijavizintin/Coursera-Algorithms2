@@ -1,6 +1,7 @@
 package week1;
 
 import week1.graphs.Graph;
+import week1.graphs.directed.DirectedGraph;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -69,9 +70,27 @@ public class GraphBuilder {
         return graph;
     }
 
-    private static Graph instance(Class clazz, int paramter) {
+    public static DirectedGraph buildGraphFirstOrder(Class<? extends DirectedGraph> clazz) {
+        DirectedGraph graph = instance(clazz, 7);
+
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(0, 5);
+        graph.addEdge(5, 2);
+        graph.addEdge(1, 4);
+        graph.addEdge(3, 2);
+        graph.addEdge(3, 5);
+        graph.addEdge(3, 4);
+        graph.addEdge(3, 6);
+        graph.addEdge(6, 4);
+        graph.addEdge(6, 0);
+
+        return graph;
+    }
+
+    private static <T extends Graph> T instance(Class<T> clazz, int paramter) {
         try {
-            return (Graph)clazz.getConstructor(int.class).newInstance(paramter);
+            return (T)clazz.getConstructor(int.class).newInstance(paramter);
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
             return null;

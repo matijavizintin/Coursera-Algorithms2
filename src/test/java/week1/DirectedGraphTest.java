@@ -1,11 +1,14 @@
 package week1;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 import org.junit.Assert;
 import org.junit.Test;
 import week1.graphs.Graph;
 import week1.graphs.algorithms.MultiSourceBFS;
+import week1.graphs.algorithms.directed.DepthFirstOrder;
 import week1.graphs.directed.DirectGraphImpl;
+import week1.graphs.directed.DirectedGraph;
 
 /**
  * Created by Matija Vižintin
@@ -36,6 +39,14 @@ public class DirectedGraphTest {
 
         // assert edges
         Assert.assertArrayEquals(mbfs.edgeTo, new int[]{0, 1, 2, 0, 0, 0, 2});
+    }
+
+    @Test
+    public void depthFirstOrderTest() {
+        DirectedGraph graph = GraphBuilder.buildGraphFirstOrder(DirectGraphImpl.class);
+
+        DepthFirstOrder dfo = new DepthFirstOrder(graph);
+        Assert.assertArrayEquals(Iterables.toArray(dfo.reversePost(), Integer.class), new Integer[]{4, 1, 2, 5, 0, 6, 3});
     }
 
 }
