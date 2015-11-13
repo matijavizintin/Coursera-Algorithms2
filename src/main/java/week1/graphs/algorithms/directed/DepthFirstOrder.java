@@ -2,6 +2,7 @@ package week1.graphs.algorithms.directed;
 
 import week1.graphs.directed.DirectedGraph;
 
+import java.util.Collections;
 import java.util.Stack;
 
 /**
@@ -29,6 +30,9 @@ public class DepthFirstOrder {
                 depthFirstSearch(i);
             }
         }
+
+        // reverse order - stack's iterator doesn't do that
+        Collections.reverse(reversePost);
     }
 
     private void depthFirstSearch(int vertex) {

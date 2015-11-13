@@ -7,6 +7,7 @@ import org.junit.Test;
 import week1.graphs.Graph;
 import week1.graphs.algorithms.MultiSourceBFS;
 import week1.graphs.algorithms.directed.DepthFirstOrder;
+import week1.graphs.algorithms.directed.StronglyConnected;
 import week1.graphs.directed.DirectGraphImpl;
 import week1.graphs.directed.DirectedGraph;
 
@@ -46,7 +47,21 @@ public class DirectedGraphTest {
         DirectedGraph graph = GraphBuilder.buildGraphFirstOrder(DirectGraphImpl.class);
 
         DepthFirstOrder dfo = new DepthFirstOrder(graph);
-        Assert.assertArrayEquals(Iterables.toArray(dfo.reversePost(), Integer.class), new Integer[]{4, 1, 2, 5, 0, 6, 3});
+        Assert.assertArrayEquals(new Integer[]{4, 1, 2, 5, 0, 6, 3}, Iterables.toArray(dfo.reversePost(), Integer.class));
+    }
+
+    @Test
+    public void stronglyConnectedTest() {
+        DirectedGraph graph = GraphBuilder.buildStroglyConnectedComponents(DirectGraphImpl.class);
+
+        // first test reverse DFO
+        DepthFirstOrder depthFirstOrder = new DepthFirstOrder(graph.reverse());
+        Assert.assertArrayEquals(
+                new Integer[]{1, 0, 2, 3, 4, 11, 9, 12, 10, 6, 8, 7, 5}, Iterables.toArray(depthFirstOrder.reversePost(), Integer.class));
+
+        // test strongly connected result
+        StronglyConnected stronglyConnected = new StronglyConnected(graph);
+        Assert.assertArrayEquals(new int[]{1, 0, 1, 1, 1, 1, 3, 4, 3, 2, 2, 2, 2}, stronglyConnected.scc);
     }
 
 }
