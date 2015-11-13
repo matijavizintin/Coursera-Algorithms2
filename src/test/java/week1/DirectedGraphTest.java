@@ -47,7 +47,7 @@ public class DirectedGraphTest {
         DirectedGraph graph = GraphBuilder.buildGraphFirstOrder(DirectGraphImpl.class);
 
         DepthFirstOrder dfo = new DepthFirstOrder(graph);
-        Assert.assertArrayEquals(new Integer[]{4, 1, 2, 5, 0, 6, 3}, Iterables.toArray(dfo.reversePost(), Integer.class));
+        Assert.assertArrayEquals(new Integer[]{3, 6, 0, 5, 2, 1, 4}, Iterables.toArray(dfo.reversePost(), Integer.class));
     }
 
     @Test
