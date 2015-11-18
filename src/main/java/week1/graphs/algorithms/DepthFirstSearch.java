@@ -12,6 +12,8 @@ public class DepthFirstSearch {
 
     public boolean[] marked;        // getters for arrays are so annoying
     public int[] edgeTo;
+    public int[] preOrder;
+    private int index;
 
     public DepthFirstSearch(Graph graph, int source) {
         this.graph = graph;
@@ -19,6 +21,8 @@ public class DepthFirstSearch {
         // init structures
         marked = new boolean[graph.vertices()];
         edgeTo = new int[graph.vertices()];
+        preOrder = new int[graph.vertices()];
+        index = 0;
 
         depthFirstSearch(source);
     }
@@ -26,6 +30,7 @@ public class DepthFirstSearch {
     private void depthFirstSearch(int vertex) {
         // set visited
         marked[vertex] = true;
+        preOrder[index++] = vertex;
 
         // go through all adjacent
         Iterable<Integer> adjacent = graph.adjacent(vertex);

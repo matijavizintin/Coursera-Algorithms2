@@ -64,4 +64,8 @@ public class DirectGraphImpl implements DirectedGraph {
         }
         return stringBuilder.toString();
     }
+
+    public void injectAdj(LinkedList<Integer>[] adj) {
+        this.adjacent = adj;
+    }
 }

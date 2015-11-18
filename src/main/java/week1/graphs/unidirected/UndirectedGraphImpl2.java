@@ -58,4 +58,8 @@ public class UndirectedGraphImpl2 implements UndirectedGraph {
         }
         return stringBuilder.toString();
     }
+
+    public void injectAdj(LinkedList<Integer>[] adj) {
+        this.adj = adj;
+    }
 }

@@ -14,11 +14,15 @@ public class BreadthFirstSearch {
     public boolean[] marked;
     public int[] edgeTo;
     public int[] distTo;
+    public int[] deQueueOrder;
+    private int index;
 
     protected BreadthFirstSearch(Graph graph) {
         marked = new boolean[graph.vertices()];
         distTo = new int[graph.vertices()];
         edgeTo = new int[graph.vertices()];
+        deQueueOrder = new int[graph.vertices()];
+        index = 0;
 
         // init edge to
         for (int i = 0; i < graph.vertices(); i++) {
@@ -36,6 +40,7 @@ public class BreadthFirstSearch {
         // add first element to a queue
         Queue<Integer> queue = new ArrayDeque<>();
         queue.add(start);
+        System.out.println("EnQ: " + start);
         marked[start] = true;
 
         visit(graph, queue);
@@ -48,6 +53,8 @@ public class BreadthFirstSearch {
         while (!queue.isEmpty()) {
             // poll
             Integer vertex = queue.poll();
+            deQueueOrder[index++] = vertex;
+            System.out.println("DeQ: " + vertex);
 
             // go through adjacent
             Iterable<Integer> adjacent = graph.adjacent(vertex);
@@ -56,6 +63,7 @@ public class BreadthFirstSearch {
                 // if not visited add to q
                 if (!marked[adj]) {
                     queue.add(adj);
+                    System.out.println("EnQ: " + adj);
                     marked[adj] = true;
                     edgeTo[adj] = vertex;
                     distTo[adj] = distTo[vertex] + 1;
