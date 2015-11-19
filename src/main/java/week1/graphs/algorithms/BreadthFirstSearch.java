@@ -27,6 +27,7 @@ public class BreadthFirstSearch {
         // init edge to
         for (int i = 0; i < graph.vertices(); i++) {
             edgeTo[i] = i;
+            deQueueOrder[i] = -1;
         }
     }
 

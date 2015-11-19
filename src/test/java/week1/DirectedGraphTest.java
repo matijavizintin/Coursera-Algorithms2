@@ -52,7 +52,7 @@ public class DirectedGraphTest {
 
     @Test
     public void stronglyConnectedTest() {
-        DirectedGraph graph = GraphBuilder.buildStroglyConnectedComponents(DirectGraphImpl.class);
+        DirectedGraph graph = GraphBuilder.buildStronglyConnectedComponents(DirectGraphImpl.class);
 
         // first test reverse DFO
         DepthFirstOrder depthFirstOrder = new DepthFirstOrder(graph.reverse());

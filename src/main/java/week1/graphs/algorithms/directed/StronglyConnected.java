@@ -33,6 +33,23 @@ public class StronglyConnected {
         }
     }
 
+    public StronglyConnected(DirectedGraph directedGraph, Iterable<Integer> reversePostorder) {
+        this.directedGraph = directedGraph;
+
+        // init structures
+        marked = new boolean[directedGraph.vertices()];
+        scc = new int[directedGraph.vertices()];
+
+        // go through all unmarked nodes
+        int componentIndex = 0;
+        for (Integer v : reversePostorder) {
+            if (!marked[v]) {
+                depthFirstSearch(v, componentIndex);
+                componentIndex++;
+            }
+        }
+    }
+
     private void depthFirstSearch(int vertex, int componentIndex) {
         // set visited
         marked[vertex] = true;

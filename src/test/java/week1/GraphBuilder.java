@@ -88,7 +88,7 @@ public class GraphBuilder {
         return graph;
     }
 
-    public static DirectedGraph buildStroglyConnectedComponents(Class<? extends DirectedGraph> clazz) {
+    public static DirectedGraph buildStronglyConnectedComponents(Class<? extends DirectedGraph> clazz) {
         DirectedGraph graph = instance(clazz, 13);
 
         graph.addEdge(4, 2);
