@@ -17,17 +17,19 @@ public class EdgeWightedGraph {
     public EdgeWightedGraph(int vertices) {
         this.vertices = vertices;
 
-        // init adj
+        // init adjacent
         this.adj = (LinkedList<Edge>[])new LinkedList[vertices];
         for (int i = 0; i < vertices; i++) {
             adj[i] = new LinkedList<>();
         }
     }
 
+    // helper method that creates the edge object
     public void addEdge(int v, int w, double weight) {
         addEdge(new Edge(v, w, weight));
     }
 
+    // inserts a undirected edge into the graph
     public void addEdge(Edge e) {
         int v = e.either();
         int w = e.other(v);
@@ -36,10 +38,12 @@ public class EdgeWightedGraph {
         edges++;
     }
 
+    // all edges adjacent to v
     public Iterable<Edge> adj(int v) {
         return adj[v];
     }
 
+    // all edges in the graph
     public Iterable<Edge> edges() {
         Set<Edge> edges = new HashSet<>();
         for (LinkedList<Edge> ll : adj) {

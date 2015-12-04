@@ -1,6 +1,8 @@
 package week2;
 
 import org.junit.Test;
+import week2.mst.KruskalMST;
+import week2.mst.graphs.Edge;
 import week2.mst.graphs.EdgeWightedGraph;
 
 /**
@@ -29,5 +31,10 @@ public class MSTTest {
         wg.addEdge(3, 6, 0.52);
         wg.addEdge(6, 0, 0.58);
         wg.addEdge(6, 4, 0.93);
+
+        KruskalMST mst = new KruskalMST(wg);
+        for (Edge edge : mst.edges()) {
+            System.out.println(edge);
+        }
     }
 }

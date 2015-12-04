@@ -9,16 +9,25 @@ public class Edge implements Comparable<Edge> {
     private int v, w;
     private double weight;
 
+    /**
+     * Connection from v to w (undirected) with weight.
+     *
+     * @param v             int
+     * @param w             int
+     * @param weight        double
+     */
     public Edge(int v, int w, double weight) {
         this.v = v;
         this.w = w;
         this.weight = weight;
     }
 
+    // picks one of the end
     public int either() {
         return v;
     }
 
+    // returns the other end
     public int other(int v) {
         return v == this.v ? w : v;
     }
@@ -61,5 +70,10 @@ public class Edge implements Comparable<Edge> {
 
     public double weight() {
         return weight;
+    }
+
+    @Override
+    public String toString() {
+        return v + " <--> " + w + " [weight: " + weight + "]";
     }
 }

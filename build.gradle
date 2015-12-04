@@ -7,10 +7,12 @@ targetCompatibility = 1.8
 
 repositories {
   mavenCentral()
+  maven { url 'https://raw.github.com/slok/algs4-mvn-repo/master' }
 }
 
 dependencies {
   compile "com.google.guava:guava:18.0"
+  compile 'edu.princeton.cs.algs4:algs4:1.0'
   testCompile "junit:junit:4.12"
   testCompile "org.assertj:assertj-core:3.2.0"
 }
