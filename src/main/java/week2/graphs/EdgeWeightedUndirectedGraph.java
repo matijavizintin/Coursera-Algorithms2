@@ -5,9 +5,9 @@ package week2.graphs;
  * Date: 30. 11. 2015
  * Time: 21:01
  */
-public class EdgeWightedUndirectedGraph extends EdgeWightedGraph<UndirectedEdge> {
+public class EdgeWeightedUndirectedGraph extends EdgeWeightedGraph<UndirectedEdge> {
 
-    public EdgeWightedUndirectedGraph(int vertices) {
+    public EdgeWeightedUndirectedGraph(int vertices) {
         super(vertices);
     }
 

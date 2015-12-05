@@ -2,7 +2,7 @@ package week2.mst;
 
 import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Queue;
-import week2.graphs.EdgeWightedUndirectedGraph;
+import week2.graphs.EdgeWeightedUndirectedGraph;
 import week2.graphs.UndirectedEdge;
 
 /**
@@ -15,11 +15,11 @@ public class PrimMST implements MST {
     private Queue<UndirectedEdge> mst;            // MST
     private MinPQ<UndirectedEdge> pq;             // priority q for the MST
 
-    public PrimMST(EdgeWightedUndirectedGraph graph) {
+    public PrimMST(EdgeWeightedUndirectedGraph graph) {
         this(graph, 0);
     }
 
-    public PrimMST(EdgeWightedUndirectedGraph graph, int startNode) {
+    public PrimMST(EdgeWeightedUndirectedGraph graph, int startNode) {
         pq = new MinPQ<>();
         mst = new Queue<>();
         marked = new boolean[graph.V()];
@@ -42,7 +42,7 @@ public class PrimMST implements MST {
         }
     }
 
-    private void visit(EdgeWightedUndirectedGraph graph, int v) {
+    private void visit(EdgeWeightedUndirectedGraph graph, int v) {
         // mark current as visited
         marked[v] = true;
 

@@ -10,12 +10,12 @@ import java.util.stream.Collectors;
  * Date: 30. 11. 2015
  * Time: 21:01
  */
-public abstract class EdgeWightedGraph<E extends Edge> {
+public abstract class EdgeWeightedGraph<E extends Edge> {
     private final int vertices;
     protected int edges;
     protected final LinkedList<E>[] adj;
 
-    public EdgeWightedGraph(int vertices) {
+    public EdgeWeightedGraph(int vertices) {
         this.vertices = vertices;
 
         // init adjacent

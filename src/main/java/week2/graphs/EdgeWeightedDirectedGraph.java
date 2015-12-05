@@ -5,9 +5,9 @@ package week2.graphs;
  * Date: 30. 11. 2015
  * Time: 21:01
  */
-public class EdgeWightedDirectedGraph extends EdgeWightedGraph<DirectedEdge> {
+public class EdgeWeightedDirectedGraph extends EdgeWeightedGraph<DirectedEdge> {
 
-    public EdgeWightedDirectedGraph(int vertices) {
+    public EdgeWeightedDirectedGraph(int vertices) {
         super(vertices);
     }
 
