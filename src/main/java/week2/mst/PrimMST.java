@@ -16,10 +16,14 @@ public class PrimMST implements MST {
     private MinPQ<Edge> pq;             // priority q for the MST
 
     public PrimMST(EdgeWightedGraph graph) {
+        this(graph, 0);
+    }
+
+    public PrimMST(EdgeWightedGraph graph, int startNode) {
         pq = new MinPQ<>();
         mst = new Queue<>();
         marked = new boolean[graph.V()];
-        visit(graph, 0);
+        visit(graph, startNode);
 
         // loop while the PQ is empty
         while (!pq.isEmpty()) {

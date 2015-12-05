@@ -29,7 +29,7 @@ public class Edge implements Comparable<Edge> {
 
     // returns the other end
     public int other(int v) {
-        return v == this.v ? w : v;
+        return v == this.v ? w : this.v;
     }
 
     @Override
