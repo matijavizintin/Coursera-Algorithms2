@@ -1,6 +1,6 @@
 package week2.shortestpaths;
 
-import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.IndexMinPQ;
 import edu.princeton.cs.algs4.Stack;
 import week2.graphs.DirectedEdge;
 import week2.graphs.EdgeWeightedDirectedGraph;
@@ -10,16 +10,19 @@ import week2.graphs.EdgeWeightedDirectedGraph;
  * Date: 05. 12. 2015
  * Time: 12:31
  */
-public class ShortestPaths {
-    private DirectedEdge[] edgeTo;
-    private double[] distTo;
-    private int start;
+public abstract class ShortestPaths {
+    protected DirectedEdge[] edgeTo;
+    protected double[] distTo;
+    protected IndexMinPQ<Double> verticesPQ;
+    protected int start;
+    protected EdgeWeightedDirectedGraph graph;
 
     public ShortestPaths(EdgeWeightedDirectedGraph graph, int start) {
+        this.graph = graph;
         this.start = start;
         edgeTo = new DirectedEdge[graph.V()];
         distTo = new double[graph.V()];
-        boolean[] marked = new boolean[graph.V()];
+        verticesPQ = new IndexMinPQ<>(graph.V());
 
         // init distTo
         for (int i = 0; i < graph.V(); i++) {
@@ -27,23 +30,13 @@ public class ShortestPaths {
         }
         distTo[start] = 0;  // update start pos
 
-        // simple algorithm that goes through all vertices and computes distance to adjacent
-        Queue<Integer> verticesQueue = new Queue<>();
-        verticesQueue.enqueue(start);
-        while (!verticesQueue.isEmpty()) {      // loop until we visited all connected vertices
-            // enqueue vertex and set as marked
-            int vertex = verticesQueue.dequeue();
-            marked[vertex] = true;
-
-            // go through all adjacent - if not already in q or processed (marked) then add it to q
-            for (DirectedEdge directedEdge : graph.adj(vertex)) {
-                if (!marked[directedEdge.to()]) verticesQueue.enqueue(directedEdge.to());
-                relax(directedEdge);
-            }
-        }
+        // execute algorithm
+        findShortestPaths();
     }
 
-    private void relax(DirectedEdge edge) {
+    protected abstract void findShortestPaths();
+
+    protected void relax(DirectedEdge edge) {
         int v = edge.from();
         int w = edge.to();
 
@@ -51,6 +44,10 @@ public class ShortestPaths {
         if (distTo[w] > distTo[v] + edge.weight()) {
             distTo[w] = distTo[v] + edge.weight();      // update dist
             edgeTo[w] = edge;                           // update edge
+
+            // update PQ
+            if (verticesPQ.contains(w)) verticesPQ.decreaseKey(w, distTo[w]);
+            else verticesPQ.insert(w, distTo[w]);
         }
     }
 
