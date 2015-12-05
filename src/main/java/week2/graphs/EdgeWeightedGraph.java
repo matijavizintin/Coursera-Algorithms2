@@ -32,7 +32,7 @@ public abstract class EdgeWeightedGraph<E extends Edge> {
     public abstract void addEdge(E e);
 
     // all edges adjacent to v
-    public Iterable<E> adj(int v) {
+    public Iterable<E> adjacent(int v) {
         return adj[v];
     }
 

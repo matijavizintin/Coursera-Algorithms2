@@ -1,25 +1,25 @@
-package week1.graphs.algorithms.directed;
+package week2.shortestpaths;
 
 import edu.princeton.cs.algs4.Stack;
 import week1.graphs.directed.DirectedGraph;
+import week2.graphs.DirectedEdge;
 
 /**
  * Created by Matija Vižintin
- * Date: 12. 11. 2015
- * Time: 19:30
+ * Date: 05. 12. 2015
+ * Time: 16:32
  */
-public class DepthFirstOrder {
-    private DirectedGraph<Integer> graph;
+public class Topological {
+    private DirectedGraph<DirectedEdge> graph;
+    private boolean[] marked;
+    private Stack<Integer> order;
 
-    public boolean[] marked;
-    private Stack<Integer> reversePost;
-
-    public DepthFirstOrder(DirectedGraph<Integer> graph) {
+    public Topological(DirectedGraph<DirectedEdge> graph) {
         this.graph = graph;
 
         // init structures
         marked = new boolean[graph.V()];
-        reversePost = new Stack<>();
+        order = new Stack<>();
 
 
         // go through all unmarked nodes
@@ -35,18 +35,19 @@ public class DepthFirstOrder {
         marked[vertex] = true;
 
         // go through all adjacent
-        for (Integer adj : graph.adjacent(vertex)) {
+        for (DirectedEdge adj : graph.adjacent(vertex)) {
+            int w = adj.to();
             // if not marked recursively go into vertex
-            if (!marked[adj]) {
-                depthFirstSearch(adj);
+            if (!marked[w]) {
+                depthFirstSearch(w);
             }
         }
 
         // push to stack
-        reversePost.push(vertex);
+        order.push(vertex);
     }
 
-    public Iterable<Integer> reversePost() {
-        return reversePost;
+    public Iterable<Integer> getOrder() {
+        return order;
     }
 }

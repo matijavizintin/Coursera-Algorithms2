@@ -8,17 +8,17 @@ import week1.graphs.Graph;
  * Time: 20:57
  */
 public class ConnectedComponents {
-    private Graph graph;
+    private Graph<Integer> graph;
 
     public boolean[] marked;
     public int[] cc;
 
-    public ConnectedComponents(Graph graph) {
+    public ConnectedComponents(Graph<Integer> graph) {
         this.graph = graph;
 
         // init structures
-        marked = new boolean[graph.vertices()];
-        cc = new int[graph.vertices()];
+        marked = new boolean[graph.V()];
+        cc = new int[graph.V()];
 
         int index = 0;
         for (int i = 0; i < marked.length; i++) {
@@ -51,7 +51,7 @@ public class ConnectedComponents {
     }
 
     public int count() {
-        return graph.vertices();
+        return graph.V();
     }
 
     // id of set of vertices

@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * Date: 10. 11. 2015
  * Time: 21:13
  */
-public class DirectGraphImpl implements DirectedGraph {
+public class DirectGraphImpl implements DirectedGraph<Integer> {
     private int vertices;
     private int edges;
     private LinkedList<Integer>[] adjacent;
@@ -34,12 +34,12 @@ public class DirectGraphImpl implements DirectedGraph {
     }
 
     @Override
-    public int vertices() {
+    public int V() {
         return vertices;
     }
 
     @Override
-    public int edges() {
+    public int E() {
         return edges;
     }
 

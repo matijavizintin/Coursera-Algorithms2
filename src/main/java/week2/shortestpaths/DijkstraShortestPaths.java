@@ -1,5 +1,6 @@
 package week2.shortestpaths;
 
+import edu.princeton.cs.algs4.IndexMinPQ;
 import week2.graphs.DirectedEdge;
 import week2.graphs.EdgeWeightedDirectedGraph;
 
@@ -9,9 +10,18 @@ import week2.graphs.EdgeWeightedDirectedGraph;
  * Time: 15:21
  */
 public class DijkstraShortestPaths extends ShortestPaths {
+    private IndexMinPQ<Double> verticesPQ;
 
     public DijkstraShortestPaths(EdgeWeightedDirectedGraph graph, int start) {
         super(graph, start);
+    }
+
+    @Override
+    protected void initStructures() {
+        super.initStructures();
+
+        // init PQ
+        verticesPQ = new IndexMinPQ<>(graph.V());
     }
 
     @Override
@@ -24,10 +34,23 @@ public class DijkstraShortestPaths extends ShortestPaths {
             int vertex = verticesPQ.delMin();
 
             // go through all adjacent
-            for (DirectedEdge directedEdge : graph.adj(vertex)) {
+            for (DirectedEdge directedEdge : graph.adjacent(vertex)) {
                 // relax the edge
                 relax(directedEdge);
             }
         }
+    }
+
+    @Override
+    protected boolean relax(DirectedEdge edge) {
+        boolean relaxed = super.relax(edge);
+        if (relaxed) {
+            // update PQ
+            int w = edge.to();
+            if (verticesPQ.contains(w)) verticesPQ.decreaseKey(w, distTo[w]);
+            else verticesPQ.insert(w, distTo[w]);
+
+        }
+        return relaxed;
     }
 }

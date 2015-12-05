@@ -47,7 +47,7 @@ public class PrimMST implements MST {
         marked[v] = true;
 
         // go through all adjacent vertices and add them into a PQ if not both ends marked
-        for (UndirectedEdge edge : graph.adj(v)) {
+        for (UndirectedEdge edge : graph.adjacent(v)) {
             if (!marked[edge.other(v)]) pq.insert(edge);
         }
     }

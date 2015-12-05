@@ -1,11 +1,13 @@
 package week2.graphs;
 
+import week1.graphs.directed.DirectedGraph;
+
 /**
  * Created by Matija Vižintin
  * Date: 30. 11. 2015
  * Time: 21:01
  */
-public class EdgeWeightedDirectedGraph extends EdgeWeightedGraph<DirectedEdge> {
+public class EdgeWeightedDirectedGraph extends EdgeWeightedGraph<DirectedEdge> implements DirectedGraph<DirectedEdge> {
 
     public EdgeWeightedDirectedGraph(int vertices) {
         super(vertices);
@@ -21,5 +23,15 @@ public class EdgeWeightedDirectedGraph extends EdgeWeightedGraph<DirectedEdge> {
         int v = e.from();
         adj[v].add(e);
         edges++;
+    }
+
+    @Override
+    public DirectedGraph reverse() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void addEdge(int v, int w) {
+        throw new UnsupportedOperationException();
     }
 }

@@ -7,5 +7,5 @@ import week1.graphs.Graph;
  * Date: 03. 11. 2015
  * Time: 21:30
  */
-public interface UndirectedGraph extends Graph {
+public interface UndirectedGraph<E> extends Graph<E> {
 }

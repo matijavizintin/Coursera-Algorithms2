@@ -13,7 +13,7 @@ import java.util.Map;
  * Date: 03. 11. 2015
  * Time: 21:30
  */
-public class UndirectedGraphImpl1 implements UndirectedGraph {
+public class UndirectedGraphImpl1 implements UndirectedGraph<Integer> {
     private int verticesCount = 0;
     private int edgesCount = 0;
 
@@ -63,19 +63,19 @@ public class UndirectedGraphImpl1 implements UndirectedGraph {
     }
 
     // number of vertices
-    public int vertices() {
+    public int V() {
         return verticesCount;
     }
 
     // number of edges
-    public int edges() {
+    public int E() {
         return edgesCount;
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int v = 0; v < vertices(); v++) {
+        for (int v = 0; v < V(); v++) {
             for (Integer w : adjacent(v)) {
                 stringBuilder.append(v).append(" - ").append(w).append("\n");
             }

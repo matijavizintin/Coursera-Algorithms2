@@ -7,7 +7,7 @@ import week1.graphs.Graph;
  * Date: 10. 11. 2015
  * Time: 21:12
  */
-public interface DirectedGraph extends Graph {
+public interface DirectedGraph<E> extends Graph<E> {
 
-    DirectedGraph reverse();
+    DirectedGraph<E> reverse();
 }

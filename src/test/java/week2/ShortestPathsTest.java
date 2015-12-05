@@ -4,6 +4,7 @@ import org.junit.Test;
 import week2.graphs.DirectedEdge;
 import week2.graphs.EdgeWeightedDirectedGraph;
 import week2.shortestpaths.DijkstraShortestPaths;
+import week2.shortestpaths.EdgeWeightedDAGShortestPaths;
 import week2.shortestpaths.ShortestPaths;
 
 /**
@@ -22,6 +23,12 @@ public class ShortestPathsTest {
     @Test
     public void dijkstraCorrectnessTest() {
         ShortestPaths sp = new DijkstraShortestPaths(buildGraph2(), 0);
+        print(sp);
+    }
+
+    @Test
+    public void dagSPTest() {
+        EdgeWeightedDAGShortestPaths sp = new EdgeWeightedDAGShortestPaths(buildGraph2(), 0);
         print(sp);
     }
 

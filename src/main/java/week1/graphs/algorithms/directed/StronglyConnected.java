@@ -8,17 +8,17 @@ import week1.graphs.directed.DirectedGraph;
  * Time: 20:16
  */
 public class StronglyConnected {
-    private DirectedGraph directedGraph;
+    private DirectedGraph<Integer> directedGraph;
 
     public boolean[] marked;
     public int[] scc;
 
-    public StronglyConnected(DirectedGraph directedGraph) {
+    public StronglyConnected(DirectedGraph<Integer> directedGraph) {
         this.directedGraph = directedGraph;
 
         // init structures
-        marked = new boolean[directedGraph.vertices()];
-        scc = new int[directedGraph.vertices()];
+        marked = new boolean[directedGraph.V()];
+        scc = new int[directedGraph.V()];
 
         // process DFO on reverse graph
         DepthFirstOrder depthFirstOrder = new DepthFirstOrder(directedGraph.reverse());
@@ -37,8 +37,8 @@ public class StronglyConnected {
         this.directedGraph = directedGraph;
 
         // init structures
-        marked = new boolean[directedGraph.vertices()];
-        scc = new int[directedGraph.vertices()];
+        marked = new boolean[directedGraph.V()];
+        scc = new int[directedGraph.V()];
 
         // go through all unmarked nodes
         int componentIndex = 0;

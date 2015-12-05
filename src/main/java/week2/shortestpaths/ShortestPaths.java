@@ -1,6 +1,5 @@
 package week2.shortestpaths;
 
-import edu.princeton.cs.algs4.IndexMinPQ;
 import edu.princeton.cs.algs4.Stack;
 import week2.graphs.DirectedEdge;
 import week2.graphs.EdgeWeightedDirectedGraph;
@@ -13,30 +12,33 @@ import week2.graphs.EdgeWeightedDirectedGraph;
 public abstract class ShortestPaths {
     protected DirectedEdge[] edgeTo;
     protected double[] distTo;
-    protected IndexMinPQ<Double> verticesPQ;
     protected int start;
     protected EdgeWeightedDirectedGraph graph;
 
     public ShortestPaths(EdgeWeightedDirectedGraph graph, int start) {
         this.graph = graph;
         this.start = start;
-        edgeTo = new DirectedEdge[graph.V()];
-        distTo = new double[graph.V()];
-        verticesPQ = new IndexMinPQ<>(graph.V());
 
-        // init distTo
-        for (int i = 0; i < graph.V(); i++) {
-            distTo[i] = Double.POSITIVE_INFINITY;
-        }
-        distTo[start] = 0;  // update start pos
+        // init
+        initStructures();
 
         // execute algorithm
         findShortestPaths();
     }
 
+    protected void initStructures() {
+        // init distTo and edgeTo
+        edgeTo = new DirectedEdge[graph.V()];
+        distTo = new double[graph.V()];
+        for (int i = 0; i < graph.V(); i++) {
+            distTo[i] = Double.POSITIVE_INFINITY;
+        }
+        distTo[start] = 0;  // update start pos
+    }
+
     protected abstract void findShortestPaths();
 
-    protected void relax(DirectedEdge edge) {
+    protected boolean relax(DirectedEdge edge) {
         int v = edge.from();
         int w = edge.to();
 
@@ -45,10 +47,10 @@ public abstract class ShortestPaths {
             distTo[w] = distTo[v] + edge.weight();      // update dist
             edgeTo[w] = edge;                           // update edge
 
-            // update PQ
-            if (verticesPQ.contains(w)) verticesPQ.decreaseKey(w, distTo[w]);
-            else verticesPQ.insert(w, distTo[w]);
+            // edge was relaxed
+            return true;
         }
+        return false;       // nothing was done
     }
 
     public double distTo(int v) {

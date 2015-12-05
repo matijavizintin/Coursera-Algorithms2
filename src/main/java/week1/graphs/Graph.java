@@ -5,17 +5,17 @@ package week1.graphs;
  * Date: 11. 11. 2015
  * Time: 19:17
  */
-public interface Graph {
+public interface Graph<E> {
 
     // add an edge from v to w
     void addEdge(int v, int w);
 
     // vertices adjacent to v
-    Iterable<Integer> adjacent(int v);
+    Iterable<E> adjacent(int v);
 
     // number of vertices
-    int vertices();
+    int V();
 
     // number of edges
-    int edges();
+    int E();
 }

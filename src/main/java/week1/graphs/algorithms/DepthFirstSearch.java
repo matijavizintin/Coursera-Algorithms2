@@ -19,9 +19,9 @@ public class DepthFirstSearch {
         this.graph = graph;
 
         // init structures
-        marked = new boolean[graph.vertices()];
-        edgeTo = new int[graph.vertices()];
-        preOrder = new int[graph.vertices()];
+        marked = new boolean[graph.V()];
+        edgeTo = new int[graph.V()];
+        preOrder = new int[graph.V()];
         index = 0;
 
         depthFirstSearch(source);

@@ -18,14 +18,14 @@ public class BreadthFirstSearch {
     private int index;
 
     protected BreadthFirstSearch(Graph graph) {
-        marked = new boolean[graph.vertices()];
-        distTo = new int[graph.vertices()];
-        edgeTo = new int[graph.vertices()];
-        deQueueOrder = new int[graph.vertices()];
+        marked = new boolean[graph.V()];
+        distTo = new int[graph.V()];
+        edgeTo = new int[graph.V()];
+        deQueueOrder = new int[graph.V()];
         index = 0;
 
         // init edge to
-        for (int i = 0; i < graph.vertices(); i++) {
+        for (int i = 0; i < graph.V(); i++) {
             edgeTo[i] = i;
             deQueueOrder[i] = -1;
         }

@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * Date: 03. 11. 2015
  * Time: 21:30
  */
-public class UndirectedGraphImpl2 implements UndirectedGraph {
+public class UndirectedGraphImpl2 implements UndirectedGraph<Integer> {
     private final int verticesCount;
     private int edgesCount = 0;
 
@@ -39,19 +39,19 @@ public class UndirectedGraphImpl2 implements UndirectedGraph {
     }
 
     // number of vertices
-    public int vertices() {
+    public int V() {
         return verticesCount;
     }
 
     // number of edges
-    public int edges() {
+    public int E() {
         return edgesCount;
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int v = 0; v < vertices(); v++) {
+        for (int v = 0; v < V(); v++) {
             for (Integer w : adjacent(v)) {
                 stringBuilder.append(v).append(" - ").append(w).append("\n");
             }
