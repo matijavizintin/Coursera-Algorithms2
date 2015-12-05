@@ -1,5 +1,6 @@
 package week2;
 
+import org.junit.Assert;
 import org.junit.Test;
 import week2.graphs.DirectedEdge;
 import week2.graphs.EdgeWeightedDirectedGraph;
@@ -30,6 +31,9 @@ public class ShortestPathsTest {
     public void dagSPTest() {
         EdgeWeightedDAGShortestPaths sp = new EdgeWeightedDAGShortestPaths(buildGraph2(), 0);
         print(sp);
+
+        // compare with dijkstra
+        compareSP(sp, new DijkstraShortestPaths(buildGraph2(), 0));
     }
 
     // build graph
@@ -86,6 +90,14 @@ public class ShortestPathsTest {
                 System.out.println(directedEdge);
             }
             System.out.println();
+        }
+    }
+
+    private void compareSP(ShortestPaths sp1, ShortestPaths sp2) {
+        for (int i = 0; i < 8; i++) {
+            double d1 = sp1.distTo(i);
+            double d2 = sp2.distTo(i);
+            Assert.assertEquals(d1, d2, Math.pow(10, -9));
         }
     }
 }
