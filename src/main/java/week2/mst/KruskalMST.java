@@ -3,8 +3,8 @@ package week2.mst;
 import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.UF;
-import week2.mst.graphs.Edge;
-import week2.mst.graphs.EdgeWightedGraph;
+import week2.graphs.EdgeWightedGraph;
+import week2.graphs.UndirectedEdge;
 
 /**
  * Created by Matija Vižintin
@@ -12,7 +12,7 @@ import week2.mst.graphs.EdgeWightedGraph;
  * Time: 20:06
  */
 public class KruskalMST implements MST {
-    private Queue<Edge> mst = new Queue<>();
+    private Queue<UndirectedEdge> mst = new Queue<>();
 
     /**
      * Build a minimum spanning tree using kruskal's algorithm.
@@ -21,8 +21,8 @@ public class KruskalMST implements MST {
      */
     public KruskalMST(EdgeWightedGraph graph) {
         // put all edges into a PQ sorted by weight - lowest first
-        MinPQ<Edge> pq = new MinPQ<>();
-        for (Edge edge : graph.edges()) {
+        MinPQ<UndirectedEdge> pq = new MinPQ<>();
+        for (UndirectedEdge edge : graph.edges()) {
             pq.insert(edge);
         }
 
@@ -30,7 +30,7 @@ public class KruskalMST implements MST {
         UF unionFind = new UF(graph.V());
         while (!pq.isEmpty() && mst.size() < graph.V() - 1) {
             // pick min edge from q
-            Edge edge = pq.delMin();
+            UndirectedEdge edge = pq.delMin();
             int v = edge.either();
             int w = edge.other(v);
 
@@ -45,9 +45,9 @@ public class KruskalMST implements MST {
     /**
      * Returns the minimum spanning tree.
      *
-     * @return          Iterable<Edge>
+     * @return          Iterable<UndirectedEdge>
      */
-    public Iterable<Edge> edges() {
+    public Iterable<UndirectedEdge> edges() {
         return mst;
     }
 }

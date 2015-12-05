@@ -1,16 +1,16 @@
-package week2.mst.graphs;
+package week2.graphs;
 
 /**
  * Created by Matija Vižintin
  * Date: 30. 11. 2015
  * Time: 20:51
  */
-public class Edge implements Comparable<Edge> {
-    private int v, w;
-    private double weight;
+public abstract class Edge implements Comparable<Edge> {
+    protected int v, w;
+    protected double weight;
 
     /**
-     * Connection from v to w (undirected) with weight.
+     * Connection from v to w with weight.
      *
      * @param v             int
      * @param w             int
@@ -20,16 +20,6 @@ public class Edge implements Comparable<Edge> {
         this.v = v;
         this.w = w;
         this.weight = weight;
-    }
-
-    // picks one of the end
-    public int either() {
-        return v;
-    }
-
-    // returns the other end
-    public int other(int v) {
-        return v == this.v ? w : this.v;
     }
 
     @Override
@@ -70,10 +60,5 @@ public class Edge implements Comparable<Edge> {
 
     public double weight() {
         return weight;
-    }
-
-    @Override
-    public String toString() {
-        return v + " <--> " + w + " [weight: " + weight + "]";
     }
 }

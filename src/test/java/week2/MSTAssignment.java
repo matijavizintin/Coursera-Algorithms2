@@ -3,10 +3,10 @@ package week2;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import org.junit.Test;
+import week2.graphs.EdgeWightedGraph;
+import week2.graphs.UndirectedEdge;
 import week2.mst.KruskalMST;
 import week2.mst.PrimMST;
-import week2.mst.graphs.Edge;
-import week2.mst.graphs.EdgeWightedGraph;
 
 /**
  * Created by Matija Vižintin
@@ -40,7 +40,7 @@ public class MSTAssignment {
     public void quiz1() {
         EdgeWightedGraph edgeWightedGraph = createGraph();
         KruskalMST mst = new KruskalMST(edgeWightedGraph);
-        for (Edge edge : mst.edges()) {
+        for (UndirectedEdge edge : mst.edges()) {
             System.out.printf("%.0f ", edge.weight());
         }
     }
@@ -49,7 +49,7 @@ public class MSTAssignment {
     public void quiz2() {
         EdgeWightedGraph edgeWightedGraph = createGraph2();
         PrimMST mst = new PrimMST(edgeWightedGraph, 1);     // define start node
-        for (Edge edge : mst.edges()) {
+        for (UndirectedEdge edge : mst.edges()) {
             System.out.printf("%.0f ", edge.weight());
         }
     }

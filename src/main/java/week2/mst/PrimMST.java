@@ -2,8 +2,8 @@ package week2.mst;
 
 import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Queue;
-import week2.mst.graphs.Edge;
-import week2.mst.graphs.EdgeWightedGraph;
+import week2.graphs.EdgeWightedGraph;
+import week2.graphs.UndirectedEdge;
 
 /**
  * Created by Matija Vižintin
@@ -12,8 +12,8 @@ import week2.mst.graphs.EdgeWightedGraph;
  */
 public class PrimMST implements MST {
     private boolean[] marked;           // vertices in MST
-    private Queue<Edge> mst;            // MST
-    private MinPQ<Edge> pq;             // priority q for the MST
+    private Queue<UndirectedEdge> mst;            // MST
+    private MinPQ<UndirectedEdge> pq;             // priority q for the MST
 
     public PrimMST(EdgeWightedGraph graph) {
         this(graph, 0);
@@ -28,7 +28,7 @@ public class PrimMST implements MST {
         // loop while the PQ is empty
         while (!pq.isEmpty()) {
             // pick minimum weighted edge
-            Edge edge = pq.delMin();
+            UndirectedEdge edge = pq.delMin();
 
             // check if both ends already in tree
             int v = edge.either();
@@ -47,13 +47,13 @@ public class PrimMST implements MST {
         marked[v] = true;
 
         // go through all adjacent vertices and add them into a PQ if not both ends marked
-        for (Edge edge : graph.adj(v)) {
+        for (UndirectedEdge edge : graph.adj(v)) {
             if (!marked[edge.other(v)]) pq.insert(edge);
         }
     }
 
     @Override
-    public Iterable<Edge> edges() {
+    public Iterable<UndirectedEdge> edges() {
         return mst;
     }
 }

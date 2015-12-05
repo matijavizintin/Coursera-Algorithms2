@@ -1,4 +1,4 @@
-package week2.mst.graphs;
+package week2.graphs;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -12,13 +12,13 @@ import java.util.Set;
 public class EdgeWightedGraph {
     private final int vertices;
     private int edges;
-    private final LinkedList<Edge>[] adj;
+    private final LinkedList<UndirectedEdge>[] adj;
 
     public EdgeWightedGraph(int vertices) {
         this.vertices = vertices;
 
         // init adjacent
-        this.adj = (LinkedList<Edge>[])new LinkedList[vertices];
+        this.adj = (LinkedList<UndirectedEdge>[])new LinkedList[vertices];
         for (int i = 0; i < vertices; i++) {
             adj[i] = new LinkedList<>();
         }
@@ -26,11 +26,11 @@ public class EdgeWightedGraph {
 
     // helper method that creates the edge object
     public void addEdge(int v, int w, double weight) {
-        addEdge(new Edge(v, w, weight));
+        addEdge(new UndirectedEdge(v, w, weight));
     }
 
     // inserts a undirected edge into the graph
-    public void addEdge(Edge e) {
+    public void addEdge(UndirectedEdge e) {
         int v = e.either();
         int w = e.other(v);
         adj[v].add(e);
@@ -39,15 +39,15 @@ public class EdgeWightedGraph {
     }
 
     // all edges adjacent to v
-    public Iterable<Edge> adj(int v) {
+    public Iterable<UndirectedEdge> adj(int v) {
         return adj[v];
     }
 
     // all edges in the graph
-    public Iterable<Edge> edges() {
-        Set<Edge> edges = new HashSet<>();
-        for (LinkedList<Edge> ll : adj) {
-            for (Edge edge : ll) {
+    public Iterable<UndirectedEdge> edges() {
+        Set<UndirectedEdge> edges = new HashSet<>();
+        for (LinkedList<UndirectedEdge> ll : adj) {
+            for (UndirectedEdge edge : ll) {
                 edges.add(edge);
             }
         }

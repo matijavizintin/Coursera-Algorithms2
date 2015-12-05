@@ -1,6 +1,6 @@
 package week2.mst;
 
-import week2.mst.graphs.Edge;
+import week2.graphs.UndirectedEdge;
 
 /**
  * Created by Matija Vižintin
@@ -8,5 +8,5 @@ import week2.mst.graphs.Edge;
  * Time: 21:22
  */
 public interface MST {
-    Iterable<Edge> edges();
+    Iterable<UndirectedEdge> edges();
 }

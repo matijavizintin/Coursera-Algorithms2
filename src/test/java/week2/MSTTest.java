@@ -1,10 +1,10 @@
 package week2;
 
 import org.junit.Test;
+import week2.graphs.EdgeWightedGraph;
+import week2.graphs.UndirectedEdge;
 import week2.mst.KruskalMST;
 import week2.mst.PrimMST;
-import week2.mst.graphs.Edge;
-import week2.mst.graphs.EdgeWightedGraph;
 
 /**
  * Created by Matija Vižintin
@@ -20,7 +20,7 @@ public class MSTTest {
 
         // compute mst
         KruskalMST mst = new KruskalMST(wg);
-        for (Edge edge : mst.edges()) {
+        for (UndirectedEdge edge : mst.edges()) {
             System.out.println(edge);
         }
     }
@@ -32,7 +32,7 @@ public class MSTTest {
 
         // compute mst
         PrimMST mst = new PrimMST(wg);
-        for (Edge edge : mst.edges()) {
+        for (UndirectedEdge edge : mst.edges()) {
             System.out.println(edge);
         }
     }
