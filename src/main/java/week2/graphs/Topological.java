@@ -1,8 +1,7 @@
-package week2.shortestpaths;
+package week2.graphs;
 
 import edu.princeton.cs.algs4.Stack;
 import week1.graphs.directed.DirectedGraph;
-import week2.graphs.DirectedEdge;
 
 /**
  * Created by Matija Vižintin

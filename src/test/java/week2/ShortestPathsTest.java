@@ -1,9 +1,11 @@
 package week2;
 
+import com.google.common.collect.Iterables;
 import org.junit.Assert;
 import org.junit.Test;
 import week2.graphs.DirectedEdge;
 import week2.graphs.EdgeWeightedDirectedGraph;
+import week2.shortestpaths.BellmanFordShortestPaths;
 import week2.shortestpaths.DijkstraShortestPaths;
 import week2.shortestpaths.EdgeWeightedDAGShortestPaths;
 import week2.shortestpaths.ShortestPaths;
@@ -27,6 +29,21 @@ public class ShortestPathsTest {
         print(sp);
     }
 
+    @Test       // NOTE: it works but it's not optimal
+    public void dijkstraNegativeTest() {
+        EdgeWeightedDirectedGraph graph = new EdgeWeightedDirectedGraph(4);
+        graph.addEdge(0, 1, 4);
+        graph.addEdge(1, 2, 6);
+        graph.addEdge(2, 3, -9);
+        graph.addEdge(0, 3, 2);
+        ShortestPaths sp = new DijkstraShortestPaths(graph, 0);
+        print(sp);
+
+        // compare with others
+        compareSP(sp, new EdgeWeightedDAGShortestPaths(graph, 0));
+        compareSP(sp, new BellmanFordShortestPaths(graph, 0));
+    }
+
     @Test
     public void dagSPTest() {
         EdgeWeightedDAGShortestPaths sp = new EdgeWeightedDAGShortestPaths(buildGraph2(), 0);
@@ -34,6 +51,16 @@ public class ShortestPathsTest {
 
         // compare with dijkstra
         compareSP(sp, new DijkstraShortestPaths(buildGraph2(), 0));
+    }
+
+    @Test
+    public void bellmanFordTest() {
+        ShortestPaths sp = new BellmanFordShortestPaths(buildGraph3(), 0);
+        print(sp);
+
+        // compare with dijkstra and EWDAGSP
+        compareSP(sp, new DijkstraShortestPaths(buildGraph3(), 0));
+        compareSP(sp, new EdgeWeightedDAGShortestPaths(buildGraph3(), 0));
     }
 
     // build graph
@@ -80,8 +107,30 @@ public class ShortestPathsTest {
         return graph;
     }
 
+    private EdgeWeightedDirectedGraph buildGraph3() {
+        EdgeWeightedDirectedGraph graph = new EdgeWeightedDirectedGraph(8);
+        graph.addEdge(0, 1, 5);
+        graph.addEdge(0, 4, 9);
+        graph.addEdge(0, 7, 8);
+        graph.addEdge(1, 2, 12);
+        graph.addEdge(1, 3, 15);
+        graph.addEdge(1, 7, 4);
+        graph.addEdge(2, 3, 3);
+        graph.addEdge(2, 6, 11);
+        graph.addEdge(3, 6, 9);
+        graph.addEdge(4, 5, 4);
+        graph.addEdge(4, 6, 20);
+        graph.addEdge(4, 7, 5);
+        graph.addEdge(5, 2, 1);
+        graph.addEdge(5, 6, 13);
+        graph.addEdge(7, 5, 6);
+        graph.addEdge(7, 2, 7);
+
+        return graph;
+    }
+
     private void print(ShortestPaths sp) {
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < sp.V(); i++) {
             double dist = sp.distTo(i);
             System.out.printf("dist to %d = %f\n", i, dist);
             System.out.printf("hasPath to %d = %b\n", i, sp.hasPathTo(i));
@@ -94,10 +143,19 @@ public class ShortestPathsTest {
     }
 
     private void compareSP(ShortestPaths sp1, ShortestPaths sp2) {
-        for (int i = 0; i < 8; i++) {
+        Assert.assertEquals(sp1.V(), sp2.V());
+        for (int i = 0; i < sp1.V(); i++) {
             double d1 = sp1.distTo(i);
             double d2 = sp2.distTo(i);
             Assert.assertEquals(d1, d2, Math.pow(10, -9));
+
+            // assert path
+            Assert.assertEquals(sp1.hasPathTo(i), sp2.hasPathTo(i));
+            assertIterable(sp1.pathTo(i), sp2.pathTo(i));
         }
+    }
+
+    private void assertIterable(Iterable<DirectedEdge> i1, Iterable<DirectedEdge> i2) {
+        Assert.assertArrayEquals(Iterables.toArray(i1, DirectedEdge.class), Iterables.toArray(i2, DirectedEdge.class));
     }
 }

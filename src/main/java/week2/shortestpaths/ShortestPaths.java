@@ -68,4 +68,8 @@ public abstract class ShortestPaths {
     public boolean hasPathTo(int v) {
         return start == v || pathTo(v).iterator().hasNext();
     }
+
+    public int V() {
+        return graph.V();
+    }
 }

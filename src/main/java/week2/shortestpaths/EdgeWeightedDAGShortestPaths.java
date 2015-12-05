@@ -2,6 +2,7 @@ package week2.shortestpaths;
 
 import week2.graphs.DirectedEdge;
 import week2.graphs.EdgeWeightedDirectedGraph;
+import week2.graphs.Topological;
 
 /**
  * Created by Matija Vižintin
