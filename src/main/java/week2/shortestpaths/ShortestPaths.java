@@ -4,20 +4,30 @@ import edu.princeton.cs.algs4.Stack;
 import week2.graphs.DirectedEdge;
 import week2.graphs.EdgeWeightedDirectedGraph;
 
+import java.util.List;
+
 /**
  * Created by Matija Vižintin
  * Date: 05. 12. 2015
  * Time: 12:31
  */
 public abstract class ShortestPaths {
+    protected static final boolean debug = false;
+    protected List<Integer> debugForcedTopological;
+
     protected DirectedEdge[] edgeTo;
     protected double[] distTo;
     protected int start;
     protected EdgeWeightedDirectedGraph graph;
 
     public ShortestPaths(EdgeWeightedDirectedGraph graph, int start) {
+        this(graph, start, null);
+    }
+
+    protected ShortestPaths(EdgeWeightedDirectedGraph graph, int start, List<Integer> debugForcedTopological) {
         this.graph = graph;
         this.start = start;
+        this.debugForcedTopological = debugForcedTopological;
 
         // init
         initStructures();
@@ -46,6 +56,11 @@ public abstract class ShortestPaths {
         if (distTo[w] > distTo[v] + edge.weight()) {
             distTo[w] = distTo[v] + edge.weight();      // update dist
             edgeTo[w] = edge;                           // update edge
+            
+            if (debug) {
+                System.out.printf("relaxed = %d -> %d\n", v, w);
+                debugPrintDist();
+            }
 
             // edge was relaxed
             return true;
@@ -71,5 +86,12 @@ public abstract class ShortestPaths {
 
     public int V() {
         return graph.V();
+    }
+
+    protected void debugPrintDist() {
+        for (int i = 0; i < distTo.length; i++) {
+            System.out.printf("%.0f ", distTo[i]);
+        }
+        System.out.println("\n");
     }
 }

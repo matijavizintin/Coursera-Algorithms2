@@ -21,6 +21,11 @@ public class BellmanFordShortestPaths extends ShortestPaths {
                     relax(e);
                 }
             }
+
+            if (debug) {
+                System.out.printf("Printing distTo after pass %d\n", i);
+                debugPrintDist();
+            }
         }
     }
 }
