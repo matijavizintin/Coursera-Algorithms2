@@ -3,7 +3,7 @@ package week2;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import org.junit.Test;
-import week2.graphs.EdgeWightedGraph;
+import week2.graphs.EdgeWightedUndirectedGraph;
 import week2.graphs.UndirectedEdge;
 import week2.mst.KruskalMST;
 import week2.mst.PrimMST;
@@ -38,7 +38,7 @@ public class MSTAssignment {
 
     @Test
     public void quiz1() {
-        EdgeWightedGraph edgeWightedGraph = createGraph();
+        EdgeWightedUndirectedGraph edgeWightedGraph = createGraph();
         KruskalMST mst = new KruskalMST(edgeWightedGraph);
         for (UndirectedEdge edge : mst.edges()) {
             System.out.printf("%.0f ", edge.weight());
@@ -47,14 +47,14 @@ public class MSTAssignment {
 
     @Test
     public void quiz2() {
-        EdgeWightedGraph edgeWightedGraph = createGraph2();
+        EdgeWightedUndirectedGraph edgeWightedGraph = createGraph2();
         PrimMST mst = new PrimMST(edgeWightedGraph, 1);     // define start node
         for (UndirectedEdge edge : mst.edges()) {
             System.out.printf("%.0f ", edge.weight());
         }
     }
 
-    private EdgeWightedGraph createGraph() {
+    private EdgeWightedUndirectedGraph createGraph() {
         String s = "F-A    17\n" +
                    "    A-B    16\n" +
                    "    B-C    10\n" +
@@ -76,7 +76,7 @@ public class MSTAssignment {
         return convertToGraph(s);
     }
 
-    private EdgeWightedGraph createGraph2() {
+    private EdgeWightedUndirectedGraph createGraph2() {
         String s = "A-B      16\n" +
                    "    A-F       8\n" +
                    "    A-G       2\n" +
@@ -98,8 +98,8 @@ public class MSTAssignment {
         return convertToGraph(s);
     }
 
-    private EdgeWightedGraph convertToGraph(String input) {
-        EdgeWightedGraph edgeWightedGraph = new EdgeWightedGraph(10);
+    private EdgeWightedUndirectedGraph convertToGraph(String input) {
+        EdgeWightedUndirectedGraph edgeWightedGraph = new EdgeWightedUndirectedGraph(10);
         for (String s : input.split("\n")) {
             s = s.trim();
             char firstNode = s.charAt(0);

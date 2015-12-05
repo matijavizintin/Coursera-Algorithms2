@@ -1,7 +1,7 @@
 package week2;
 
 import org.junit.Test;
-import week2.graphs.EdgeWightedGraph;
+import week2.graphs.EdgeWightedUndirectedGraph;
 import week2.graphs.UndirectedEdge;
 import week2.mst.KruskalMST;
 import week2.mst.PrimMST;
@@ -16,7 +16,7 @@ public class MSTTest {
     @Test
     public void test1() {
         // build graph
-        EdgeWightedGraph wg = buildGraph();
+        EdgeWightedUndirectedGraph wg = buildGraph();
 
         // compute mst
         KruskalMST mst = new KruskalMST(wg);
@@ -28,7 +28,7 @@ public class MSTTest {
     @Test
     public void test2() {
         // build graph
-        EdgeWightedGraph wg = buildGraph();
+        EdgeWightedUndirectedGraph wg = buildGraph();
 
         // compute mst
         PrimMST mst = new PrimMST(wg);
@@ -38,8 +38,8 @@ public class MSTTest {
     }
 
     // build graph
-    private EdgeWightedGraph buildGraph() {
-        EdgeWightedGraph graph = new EdgeWightedGraph(8);
+    private EdgeWightedUndirectedGraph buildGraph() {
+        EdgeWightedUndirectedGraph graph = new EdgeWightedUndirectedGraph(8);
         graph.addEdge(0, 7, 0.16);
         graph.addEdge(2, 3, 0.17);
         graph.addEdge(1, 7, 0.19);

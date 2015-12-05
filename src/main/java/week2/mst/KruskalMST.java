@@ -3,7 +3,7 @@ package week2.mst;
 import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.UF;
-import week2.graphs.EdgeWightedGraph;
+import week2.graphs.EdgeWightedUndirectedGraph;
 import week2.graphs.UndirectedEdge;
 
 /**
@@ -17,9 +17,9 @@ public class KruskalMST implements MST {
     /**
      * Build a minimum spanning tree using kruskal's algorithm.
      *
-     * @param graph     EdgeWightedGraph
+     * @param graph     EdgeWightedUndirectedGraph
      */
-    public KruskalMST(EdgeWightedGraph graph) {
+    public KruskalMST(EdgeWightedUndirectedGraph graph) {
         // put all edges into a PQ sorted by weight - lowest first
         MinPQ<UndirectedEdge> pq = new MinPQ<>();
         for (UndirectedEdge edge : graph.edges()) {
