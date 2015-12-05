@@ -11,7 +11,7 @@ import week2.mst.graphs.EdgeWightedGraph;
  * Date: 04. 12. 2015
  * Time: 20:06
  */
-public class KruskalMST {
+public class KruskalMST implements MST {
     private Queue<Edge> mst = new Queue<>();
 
     /**
