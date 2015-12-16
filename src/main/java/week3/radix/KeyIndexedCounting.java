@@ -29,7 +29,7 @@ public class KeyIndexedCounting {
             count[r + 1] += count[r];
         }
 
-        // move to auxiliary array according to frequency
+        // move to auxiliary array; index is defined according to frequency
         for (int i = 0; i < N; i++) {
             aux[count[a[i]]++] = a[i];
         }

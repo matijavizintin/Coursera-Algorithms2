@@ -24,5 +24,10 @@ public class KeyIndexedCountingTest {
         for (int i = 0; i < a.length - 1; i++) {
             assertTrue(a[i] <= a[i + 1]);
         }
+
+        // print
+        for (int i : a) {
+            System.out.printf("%d ", i);
+        }
     }
 }
