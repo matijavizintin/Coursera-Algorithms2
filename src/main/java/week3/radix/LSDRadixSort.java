@@ -8,6 +8,7 @@ package week3.radix;
  * LSD = least significant digit not to be confused :)
  */
 public class LSDRadixSort {
+    private static final boolean DEBUG = true;
 
     public void sort(String[] array, int W) {
         int R = 256;
@@ -32,6 +33,14 @@ public class LSDRadixSort {
             }
             for (int i = 0; i < N; i++) {
                 array[i] = aux[i];
+            }
+
+            if (DEBUG && (W - d) == 2) {
+                System.out.println("loop count = " + (W - d));
+                for (String element : array) {
+                    System.out.print(element + " ");
+                }
+                System.out.println("\n");
             }
         }
     }

@@ -6,6 +6,7 @@ package week3.radix;
  * Time: 13:34
  */
 public class ThreeWayQuickSort {
+    public static final boolean DEBUG = true;
 
     public void sort(String[] a) {
         sort(a, 0, a.length - 1, 0);
@@ -26,6 +27,14 @@ public class ThreeWayQuickSort {
             if (t < v) exchange(a, lt++, i++);      // lower than pivot - raise the lower limit
             else if (t > v) exchange(a, i, gt--);   // greater than pivot - decrease the upper limit
             else i++;
+
+            if (DEBUG) {
+                System.out.printf("lo = %d, hi = %d, lt = %d, i = %d, gt = %d\n", lo, hi, lt, i, gt);
+                for (String element : a) {
+                    System.out.print(element + " ");
+                }
+                System.out.println("\n");
+            }
         }
 
         // recursive sort of 3 sub-arrays

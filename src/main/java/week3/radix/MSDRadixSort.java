@@ -8,6 +8,8 @@ package week3.radix;
  * MSD = most significant digit
  */
 public class MSDRadixSort {
+    private static final boolean DEBUG = true;
+    private static int sortCount = 0;
     private static final int INSERTION_SORT_CUT_OFF = 7;
     private final int R = 256;
 
@@ -23,7 +25,7 @@ public class MSDRadixSort {
         if (hi <= lo) return;
 
         // check for cutoff
-        if (hi - lo < INSERTION_SORT_CUT_OFF) {
+        if (!DEBUG && hi - lo < INSERTION_SORT_CUT_OFF) {
             for (int i = lo; i <= hi; i++) {
                 for (int j = i; j > lo && less(a[j], a[j - 1], d); j--) {
                     exchange(a, j, j - 1);
@@ -49,6 +51,14 @@ public class MSDRadixSort {
         }
         for (int i = lo; i <= hi; i++) {
             a[i] = aux[i - lo];
+        }
+
+        if (DEBUG && ++sortCount == 3) {
+            System.out.println("sortCount = " + sortCount);
+            for (String element : a) {
+                System.out.print(element + " ");
+            }
+            System.out.println("\n");
         }
 
         // recursive sub-array sort
