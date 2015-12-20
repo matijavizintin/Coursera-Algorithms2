@@ -1,9 +1,8 @@
 package week3;
 
+import com.google.common.base.Joiner;
 import org.junit.Test;
-import week3.radix.KeyIndexedCounting;
-import week3.radix.LSDRadixSort;
-import week3.radix.MSDRadixSort;
+import week3.radix.*;
 
 import java.util.Arrays;
 
@@ -15,6 +14,9 @@ import static org.junit.Assert.assertTrue;
  * Time: 21:53
  */
 public class RadixSortTest {
+    private final int N = 1000000;
+    private final int W_min = 10;
+    private final int W_max = 15;
 
     @Test
     public void keyIndexedCountingTest() {
@@ -37,7 +39,6 @@ public class RadixSortTest {
 
     @Test
     public void lsdSortTest() {
-        final int N = 1000000;
         final int W = 13;
         String[] input = StringArraysGenerator.generate(N, W);
 
@@ -48,9 +49,6 @@ public class RadixSortTest {
 
     @Test
     public void msdSortTest() {
-        final int N = 1000000;
-        final int W_min = 10;
-        final int W_max = 15;
         String[] input = StringArraysGenerator.generate(N, W_min, W_max);
 
         // sort
@@ -60,13 +58,30 @@ public class RadixSortTest {
 
     @Test
     public void qSortTest() {
-        final int N = 1000000;
-        final int W_min = 10;
-        final int W_max = 15;
         String[] input = StringArraysGenerator.generate(N, W_min, W_max);
 
         Arrays.sort(input);
         assertAndPrint(input, false);
+    }
+
+    @Test
+    public void threeWayQSortTest() {
+        String[] input = StringArraysGenerator.generate(N, W_min, W_max);
+
+        // sort
+        new ThreeWayQuickSort().sort(input);
+        assertAndPrint(input, false);
+    }
+
+    @Test
+    public void longestRepeatedSubstringTest() {
+        String[] input = StringArraysGenerator.generate(1000, W_min, W_max);
+        String joined = Joiner.on("").join(input);      // estimated 12.5 * 1k characters
+        System.out.println("Input length: " + joined.length());
+
+        // find longest
+        String longest = new LongestRepeatedSubstring().find(joined);
+        System.out.printf("longest.len = %d, value = %s\n", longest.length(), longest);
     }
 
     private <T extends Comparable<T>> void assertAndPrint(T[] input, boolean print) {
