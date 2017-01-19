@@ -44,8 +44,8 @@ public class DirectGraphImpl implements DirectedGraph<Integer> {
     }
 
     @Override
-    public DirectedGraph reverse() {
-        DirectedGraph reverseGraph = new DirectGraphImpl(vertices);
+    public DirectedGraph<Integer> reverse() {
+        DirectedGraph<Integer> reverseGraph = new DirectGraphImpl(vertices);
         for (int v = 0; v < vertices; v++) {
             for (Integer w : adjacent[v]) {
                 reverseGraph.addEdge(w, v);

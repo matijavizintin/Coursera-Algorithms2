@@ -88,8 +88,8 @@ public class GraphBuilder {
         return graph;
     }
 
-    public static DirectedGraph buildStronglyConnectedComponents(Class<? extends DirectedGraph> clazz) {
-        DirectedGraph graph = instance(clazz, 13);
+    public static DirectedGraph<Integer> buildStronglyConnectedComponents(Class<? extends DirectedGraph> clazz) {
+        DirectedGraph<Integer> graph = instance(clazz, 13);
 
         graph.addEdge(4, 2);
         graph.addEdge(2, 3);
@@ -119,10 +119,10 @@ public class GraphBuilder {
 
     private static <T extends Graph> T instance(Class<T> clazz, int paramter) {
         try {
-            return (T)clazz.getConstructor(int.class).newInstance(paramter);
+            return clazz.getConstructor(int.class).newInstance(paramter);
         } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
-            return null;
+            throw new RuntimeException(e);
         }
     }
 }
