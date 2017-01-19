@@ -8,14 +8,14 @@ import week1.graphs.Graph;
  * Time: 19:35
  */
 public class DepthFirstSearch {
-    private Graph graph;
+    private Graph<Integer> graph;
 
     public boolean[] marked;        // getters for arrays are so annoying
     public int[] edgeTo;
     public int[] preOrder;
     private int index;
 
-    public DepthFirstSearch(Graph graph, int source) {
+    public DepthFirstSearch(Graph<Integer> graph, int source) {
         this.graph = graph;
 
         // init structures

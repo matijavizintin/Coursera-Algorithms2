@@ -31,13 +31,13 @@ public class BreadthFirstSearch {
         }
     }
 
-    public BreadthFirstSearch(Graph graph, int source) {
+    public BreadthFirstSearch(Graph<Integer> graph, int source) {
         this(graph);
 
         visit(graph, source);
     }
 
-    private void visit(Graph graph, int start) {
+    private void visit(Graph<Integer> graph, int start) {
         // add first element to a queue
         Queue<Integer> queue = new ArrayDeque<>();
         queue.add(start);
@@ -48,7 +48,7 @@ public class BreadthFirstSearch {
     }
 
     // go through all nodes using BFS
-    protected void visit(Graph graph, Queue<Integer> queue) {
+    protected void visit(Graph<Integer> graph, Queue<Integer> queue) {
 
         // while the queue is not empty
         while (!queue.isEmpty()) {
