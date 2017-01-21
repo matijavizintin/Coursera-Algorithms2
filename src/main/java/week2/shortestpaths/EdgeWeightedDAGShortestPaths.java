@@ -1,6 +1,5 @@
 package week2.shortestpaths;
 
-import week2.structures.TopologicalSort;
 import week2.structures.edges.DirectedEdge;
 import week2.structures.graphs.EdgeWeightedDirectedGraph;
 

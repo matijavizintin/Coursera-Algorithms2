@@ -1,4 +1,4 @@
-package week2.structures;
+package week2.shortestpaths;
 
 import edu.princeton.cs.algs4.Stack;
 import week1.graphs.directed.DirectedGraph;
