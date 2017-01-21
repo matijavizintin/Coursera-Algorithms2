@@ -9,6 +9,8 @@ import week2.structures.edges.UndirectedEdge;
  * Created by Matija Vižintin
  * Date: 05. 12. 2015
  * Time: 09:33
+ *
+ * Lazy version of the Prim MST algorithm
  */
 public class PrimMST implements MST {
     private boolean[] marked;           // vertices in MST
