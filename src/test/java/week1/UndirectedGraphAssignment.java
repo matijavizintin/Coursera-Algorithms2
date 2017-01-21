@@ -68,26 +68,26 @@ public class UndirectedGraphAssignment {
 
     private UndirectedGraph buildGraph() {
         /**
-         * A:  E B F
-         B:  A C G
-         C:  G B
-         D:  G
+         A:  B F E
+         B:  C F A G
+         C:  B
+         D:  H G
          E:  A
-         F:  A G
-         G:  C H F B D
-         H:  G
+         F:  B A
+         G:  B H D
+         H:  D G
          */
 
         List<String>[] adj = new ArrayList[8];
 
-        adj[0] = Lists.<String>newArrayList("E", "B", "F");     // A
-        adj[1] = Lists.<String>newArrayList("A", "C", "G");     // B
-        adj[2] = Lists.<String>newArrayList("G", "B");     // C
-        adj[3] = Lists.<String>newArrayList("G");     // D
+        adj[0] = Lists.<String>newArrayList("B", "F", "E");     // A
+        adj[1] = Lists.<String>newArrayList("C", "F", "A", "G");     // B
+        adj[2] = Lists.<String>newArrayList("B");     // C
+        adj[3] = Lists.<String>newArrayList("H", "G");     // D
         adj[4] = Lists.<String>newArrayList("A");     // E
-        adj[5] = Lists.<String>newArrayList("A", "G");     // F
-        adj[6] = Lists.<String>newArrayList("C", "H", "F", "B", "D");     // G
-        adj[7] = Lists.<String>newArrayList("G");     // H
+        adj[5] = Lists.<String>newArrayList("B", "A");     // F
+        adj[6] = Lists.<String>newArrayList("B", "H", "D");     // G
+        adj[7] = Lists.<String>newArrayList("D", "G");     // H
 
         UndirectedGraphImpl2 graph = new UndirectedGraphImpl2(8);
         graph.injectAdj(convert(adj));
@@ -98,26 +98,26 @@ public class UndirectedGraphAssignment {
     private UndirectedGraph buildGraph2() {
         /**
          *
-         A:  E
-         B:  E F
-         C:  F D
-         D:  H G C
-         E:  B A F
-         F:  C G E B
-         G:  H F D
-         H:  G D
+         A:  F E
+         B:  F G
+         C:  H G D
+         D:  C H
+         E:  A F
+         F:  A B E
+         G:  H C B
+         H:  G C D
          */
 
         List<String>[] adj = new ArrayList[8];
 
-        adj[0] = Lists.<String>newArrayList("E");     // A
-        adj[1] = Lists.<String>newArrayList("E", "F");     // B
-        adj[2] = Lists.<String>newArrayList("F", "D");     // C
-        adj[3] = Lists.<String>newArrayList("H", "G", "C");     // D
-        adj[4] = Lists.<String>newArrayList("B", "A", "F");     // E
-        adj[5] = Lists.<String>newArrayList("C", "G", "E", "B");     // F
-        adj[6] = Lists.<String>newArrayList("H", "F", "D");     // G
-        adj[7] = Lists.<String>newArrayList("G", "D");     // H
+        adj[0] = Lists.<String>newArrayList("F", "E");     // A
+        adj[1] = Lists.<String>newArrayList("E", "G");     // B
+        adj[2] = Lists.<String>newArrayList("H", "G", "D");     // C
+        adj[3] = Lists.<String>newArrayList("C", "H");     // D
+        adj[4] = Lists.<String>newArrayList("A", "F");     // E
+        adj[5] = Lists.<String>newArrayList("A", "B", "E");     // F
+        adj[6] = Lists.<String>newArrayList("H", "C", "B");     // G
+        adj[7] = Lists.<String>newArrayList("G", "C", "D");     // H
 
         UndirectedGraphImpl2 graph = new UndirectedGraphImpl2(8);
         graph.injectAdj(convert(adj));
@@ -128,30 +128,30 @@ public class UndirectedGraphAssignment {
     private UndirectedGraph buildGraph3() {
         /**
          *
-         A:  F B
-         B:  F C G A
-         C:  G B
-         D:  H I
-         E:  J
-         F:  A B G
-         G:  C B F
-         H:  I D
-         I:  H D
-         J:  E
+         A:  B
+         B:  A
+         C:  D I H
+         D:  C I E
+         E:  I D J
+         F:  G
+         G:  F
+         H:  C I
+         I:  E D C J H
+         J:  I E
          */
 
         List<String>[] adj = new ArrayList[10];
 
-        adj[0] = Lists.<String>newArrayList("F", "B");     // A
-        adj[1] = Lists.<String>newArrayList("F", "C", "G", "A");     // B
-        adj[2] = Lists.<String>newArrayList("G", "B");     // C
-        adj[3] = Lists.<String>newArrayList("H", "I");     // D
-        adj[4] = Lists.<String>newArrayList("J");     // E
-        adj[5] = Lists.<String>newArrayList("A", "B", "G");     // F
-        adj[6] = Lists.<String>newArrayList("C", "B", "F");     // G
-        adj[7] = Lists.<String>newArrayList("I", "D");     // H
-        adj[8] = Lists.<String>newArrayList("H", "D");     // I
-        adj[9] = Lists.<String>newArrayList("E");     // J
+        adj[0] = Lists.<String>newArrayList("B");     // A
+        adj[1] = Lists.<String>newArrayList("A");     // B
+        adj[2] = Lists.<String>newArrayList("D", "I", "H");     // C
+        adj[3] = Lists.<String>newArrayList("C", "I", "E");     // D
+        adj[4] = Lists.<String>newArrayList("I", "D", "J");     // E
+        adj[5] = Lists.<String>newArrayList("G");     // F
+        adj[6] = Lists.<String>newArrayList("F");     // G
+        adj[7] = Lists.<String>newArrayList("C", "I");     // H
+        adj[8] = Lists.<String>newArrayList("E", "D", "C", "J", "H");     // I
+        adj[9] = Lists.<String>newArrayList("I", "E");     // J
 
         UndirectedGraphImpl2 graph = new UndirectedGraphImpl2(10);
         graph.injectAdj(convert(adj));

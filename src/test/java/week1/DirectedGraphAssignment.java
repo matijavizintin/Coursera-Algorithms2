@@ -42,7 +42,21 @@ public class DirectedGraphAssignment {
     public void test3() {
         DirectedGraph g = buildGraph3();
 
-        StronglyConnected sc = new StronglyConnected(g, Lists.newArrayList(3, 8, 7, 9, 4, 0, 6, 1, 2, 5));
+        /*
+         * A = 0
+         * B = 1
+         * C = 2
+         * D = 3
+         * E = 4
+         * F = 5
+         * G = 6
+         * H = 7
+         * I = 8
+         * J = 9
+         */
+
+                                                                        // D I J E A F B H C G
+        StronglyConnected sc = new StronglyConnected(g, Lists.newArrayList(3, 8, 9, 4, 0, 5, 1, 7, 2, 6));
         for (int i : sc.scc) {
             System.out.print(i + " ");
         }
@@ -50,26 +64,26 @@ public class DirectedGraphAssignment {
 
     private DirectedGraph buildGraph() {
         /**
-        0 A:  B
-        1 B:  E F
-        2 C:  B D
-        3 D:  G
-        4 E:  A F
-        5 F:  C
-        6 G:  F C
-        7 H:  D G
+         A:  B E
+         B:  C E
+         C:  F G D
+         D:  H
+         E:  F
+         F:  B
+         G:  H F
+         H:  C
          */
 
         List<String>[] adj = new ArrayList[8];
 
-        adj[0] = Lists.<String>newArrayList("B");     // A
-        adj[1] = Lists.<String>newArrayList("E", "F");     // B
-        adj[2] = Lists.<String>newArrayList("B", "D");     // C
-        adj[3] = Lists.<String>newArrayList("G");     // D
-        adj[4] = Lists.<String>newArrayList("A", "F");     // E
-        adj[5] = Lists.<String>newArrayList("C");     // F
-        adj[6] = Lists.<String>newArrayList("F", "C");     // G
-        adj[7] = Lists.<String>newArrayList("D", "G");     // H
+        adj[0] = Lists.<String>newArrayList("B", "E");     // A
+        adj[1] = Lists.<String>newArrayList("C", "E");     // B
+        adj[2] = Lists.<String>newArrayList("F", "G", "D");     // C
+        adj[3] = Lists.<String>newArrayList("H");     // D
+        adj[4] = Lists.<String>newArrayList("F");     // E
+        adj[5] = Lists.<String>newArrayList("B");     // F
+        adj[6] = Lists.<String>newArrayList("H", "F");     // G
+        adj[7] = Lists.<String>newArrayList("C");     // H
 
         DirectGraphImpl graph = new DirectGraphImpl(8);
         graph.injectAdj(UndirectedGraphAssignment.convert(adj));
@@ -80,25 +94,25 @@ public class DirectedGraphAssignment {
     private DirectedGraph buildGraph2() {
         /**
          A:
-         B:  C A F
-         C:  D
-         D:  H
-         E:  F A B
-         F:  C
-         G:  F H C D
-         H:
+         B:  C A F E G
+         C:  D G
+         D:  G
+         E:  A F
+         F:  G
+         G:
+         H:  G D
          */
 
         List<String>[] adj = new ArrayList[8];
 
         adj[0] = Lists.<String>newArrayList();     // A
-        adj[1] = Lists.<String>newArrayList("C", "A", "F");     // B
-        adj[2] = Lists.<String>newArrayList("D");     // C
-        adj[3] = Lists.<String>newArrayList("H");     // D
-        adj[4] = Lists.<String>newArrayList("F", "A", "B");     // E
-        adj[5] = Lists.<String>newArrayList("C");     // F
-        adj[6] = Lists.<String>newArrayList("F", "H", "C", "D");     // G
-        adj[7] = Lists.<String>newArrayList();     // H
+        adj[1] = Lists.<String>newArrayList("C", "A", "F", "E", "G");     // B
+        adj[2] = Lists.<String>newArrayList("D", "G");     // C
+        adj[3] = Lists.<String>newArrayList("G");     // D
+        adj[4] = Lists.<String>newArrayList("A", "F");     // E
+        adj[5] = Lists.<String>newArrayList("G");     // F
+        adj[6] = Lists.<String>newArrayList();     // G
+        adj[7] = Lists.<String>newArrayList("G", "D");     // H
 
         DirectGraphImpl graph = new DirectGraphImpl(8);
         graph.injectAdj(UndirectedGraphAssignment.convert(adj));
@@ -108,29 +122,29 @@ public class DirectedGraphAssignment {
 
     private DirectedGraph buildGraph3() {
         /**
-         A:  B F
-         B:  G H
+         A:  B
+         B:  F
          C:  H D B
-         D:  E H
+         D:  E
          E:  J
-         F:  G
-         G:  H A
-         H:  I
-         I:  D E
+         F:  A G
+         G:  B H
+         H:  I B D
+         I:  E D
          J:  I
          */
 
         List<String>[] adj = new ArrayList[10];
 
-        adj[0] = Lists.<String>newArrayList("B", "F");     // A
-        adj[1] = Lists.<String>newArrayList("G", "H");     // B
+        adj[0] = Lists.<String>newArrayList("B");     // A
+        adj[1] = Lists.<String>newArrayList("F");     // B
         adj[2] = Lists.<String>newArrayList("H", "D", "B");     // C
-        adj[3] = Lists.<String>newArrayList("E", "H");     // D
+        adj[3] = Lists.<String>newArrayList("E");     // D
         adj[4] = Lists.<String>newArrayList("J");     // E
-        adj[5] = Lists.<String>newArrayList("G");     // F
-        adj[6] = Lists.<String>newArrayList("H", "A");     // G
-        adj[7] = Lists.<String>newArrayList("I");     // H
-        adj[8] = Lists.<String>newArrayList("D", "E");     // I
+        adj[5] = Lists.<String>newArrayList("A", "G");     // F
+        adj[6] = Lists.<String>newArrayList("B", "H");     // G
+        adj[7] = Lists.<String>newArrayList("I", "B", "D");     // H
+        adj[8] = Lists.<String>newArrayList("E", "D");     // I
         adj[9] = Lists.<String>newArrayList("I");     // J
 
         DirectGraphImpl graph = new DirectGraphImpl(10);

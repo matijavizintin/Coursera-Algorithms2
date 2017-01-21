@@ -33,7 +33,7 @@ public class StronglyConnected {
         }
     }
 
-    public StronglyConnected(DirectedGraph directedGraph, Iterable<Integer> reversePostorder) {
+    public StronglyConnected(DirectedGraph<Integer> directedGraph, Iterable<Integer> reversePostorder) {
         this.directedGraph = directedGraph;
 
         // init structures
