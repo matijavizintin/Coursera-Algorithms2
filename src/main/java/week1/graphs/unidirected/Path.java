@@ -17,7 +17,7 @@ public class Path {
 
     private DepthFirstSearch dfs;
 
-    public Path(Graph undirectedGraph, int source) {
+    public Path(Graph<Integer> undirectedGraph, int source) {
         this.source = source;
 
         // perform DFS on undirectedGraph

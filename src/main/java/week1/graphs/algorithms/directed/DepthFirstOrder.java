@@ -21,7 +21,6 @@ public class DepthFirstOrder {
         marked = new boolean[graph.V()];
         reversePost = new Stack<>();
 
-
         // go through all unmarked nodes
         for (int i = 0; i < graph.V(); i++) {
             if (!marked[i]) {

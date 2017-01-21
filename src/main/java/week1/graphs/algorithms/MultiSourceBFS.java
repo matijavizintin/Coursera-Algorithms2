@@ -12,13 +12,13 @@ import java.util.Queue;
  */
 public class MultiSourceBFS extends BreadthFirstSearch {
 
-    public MultiSourceBFS(Graph graph, Iterable<Integer> nodes) {
+    public MultiSourceBFS(Graph<Integer> graph, Iterable<Integer> nodes) {
         super(graph);
 
         visit(graph, nodes);
     }
 
-    private void visit(Graph graph, Iterable<Integer> nodes) {
+    private void visit(Graph<Integer> graph, Iterable<Integer> nodes) {
         // add elements to a queue
         Queue<Integer> queue = new ArrayDeque<>();
         for (Integer node : nodes) {
