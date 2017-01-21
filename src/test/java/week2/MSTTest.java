@@ -1,6 +1,8 @@
 package week2;
 
 import org.junit.Test;
+import week2.mst.GreedyMST;
+import week2.mst.MST;
 import week2.structures.graphs.EdgeWeightedUndirectedGraph;
 import week2.structures.edges.UndirectedEdge;
 import week2.mst.KruskalMST;
@@ -19,10 +21,12 @@ public class MSTTest {
         EdgeWeightedUndirectedGraph wg = buildGraph();
 
         // compute mst
-        KruskalMST mst = new KruskalMST(wg);
+        MST mst = new KruskalMST(wg);
+        System.out.println("Kruska");
         for (UndirectedEdge edge : mst.edges()) {
             System.out.println(edge);
         }
+        System.out.println();
     }
 
     @Test
@@ -31,10 +35,26 @@ public class MSTTest {
         EdgeWeightedUndirectedGraph wg = buildGraph();
 
         // compute mst
-        PrimMST mst = new PrimMST(wg);
+        MST mst = new PrimMST(wg);
+        System.out.println("Prim");
         for (UndirectedEdge edge : mst.edges()) {
             System.out.println(edge);
         }
+        System.out.println();
+    }
+
+    @Test
+    public void test3() {
+        // build graph
+        EdgeWeightedUndirectedGraph wg = buildGraph();
+
+        // compute mst
+        MST mst = new GreedyMST(wg);
+        System.out.println("Home made");
+        for (UndirectedEdge edge : mst.edges()) {
+            System.out.println(edge);
+        }
+        System.out.println();
     }
 
     // build graph

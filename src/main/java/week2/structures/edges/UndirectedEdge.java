@@ -27,6 +27,10 @@ public class UndirectedEdge extends Edge {
         return v == this.v ? w : this.v;
     }
 
+    public boolean isAny(int v) {
+        return this.v == v || this.w == v;
+    }
+
     @Override
     public String toString() {
         return v + " <--> " + w + " [weight: " + weight + "]";
