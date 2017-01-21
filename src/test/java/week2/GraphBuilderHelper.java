@@ -2,8 +2,8 @@ package week2;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import week2.graphs.Edge;
-import week2.graphs.EdgeWeightedGraph;
+import week2.structures.edges.Edge;
+import week2.structures.graphs.EdgeWeightedGraph;
 
 import java.util.List;
 import java.util.stream.Collectors;

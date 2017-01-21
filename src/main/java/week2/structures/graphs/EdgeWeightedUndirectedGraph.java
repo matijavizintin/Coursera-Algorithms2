@@ -1,4 +1,6 @@
-package week2.graphs;
+package week2.structures.graphs;
+
+import week2.structures.edges.UndirectedEdge;
 
 /**
  * Created by Matija Vižintin

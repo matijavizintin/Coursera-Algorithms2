@@ -2,8 +2,8 @@ package week2.mst;
 
 import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Queue;
-import week2.graphs.EdgeWeightedUndirectedGraph;
-import week2.graphs.UndirectedEdge;
+import week2.structures.graphs.EdgeWeightedUndirectedGraph;
+import week2.structures.edges.UndirectedEdge;
 
 /**
  * Created by Matija Vižintin

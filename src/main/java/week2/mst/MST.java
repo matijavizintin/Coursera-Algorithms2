@@ -1,6 +1,6 @@
 package week2.mst;
 
-import week2.graphs.UndirectedEdge;
+import week2.structures.edges.UndirectedEdge;
 
 /**
  * Created by Matija Vižintin

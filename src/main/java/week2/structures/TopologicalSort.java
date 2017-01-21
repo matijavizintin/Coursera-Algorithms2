@@ -1,27 +1,27 @@
-package week2.graphs;
+package week2.structures;
 
 import edu.princeton.cs.algs4.Stack;
 import week1.graphs.directed.DirectedGraph;
+import week2.structures.edges.DirectedEdge;
 
 /**
  * Created by Matija Vižintin
  * Date: 05. 12. 2015
  * Time: 16:32
  */
-public class Topological {
+public class TopologicalSort {
     private DirectedGraph<DirectedEdge> graph;
     private boolean[] marked;
     private Stack<Integer> order;
 
-    public Topological(DirectedGraph<DirectedEdge> graph) {
+    public TopologicalSort(DirectedGraph<DirectedEdge> graph) {
         this.graph = graph;
 
         // init structures
         marked = new boolean[graph.V()];
         order = new Stack<>();
 
-
-        // go through all unmarked nodes
+        // go through all unmarked nodes and run DFS
         for (int i = 0; i < graph.V(); i++) {
             if (!marked[i]) {
                 depthFirstSearch(i);

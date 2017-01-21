@@ -1,8 +1,8 @@
 package week2.shortestpaths;
 
-import week2.graphs.DirectedEdge;
-import week2.graphs.EdgeWeightedDirectedGraph;
-import week2.graphs.Topological;
+import week2.structures.TopologicalSort;
+import week2.structures.edges.DirectedEdge;
+import week2.structures.graphs.EdgeWeightedDirectedGraph;
 
 import java.util.List;
 
@@ -22,11 +22,11 @@ public class EdgeWeightedDAGShortestPaths extends ShortestPaths {
 
     @Override
     protected void findShortestPaths() {
-        // compute topological order of a DAG
-        Topological topological = new Topological(graph);
+        // compute topologicalSort order of a DAG
+        TopologicalSort topologicalSort = new TopologicalSort(graph);
 
         // go through vertices and relax adjacent
-        for (Integer v : debugForcedTopological != null ? debugForcedTopological : topological.getOrder()) {
+        for (Integer v : debugForcedTopological != null ? debugForcedTopological : topologicalSort.getOrder()) {
             for (DirectedEdge directedEdge : graph.adjacent(v)) {
                 relax(directedEdge);
             }

@@ -1,8 +1,8 @@
 package week2.shortestpaths;
 
 import edu.princeton.cs.algs4.Stack;
-import week2.graphs.DirectedEdge;
-import week2.graphs.EdgeWeightedDirectedGraph;
+import week2.structures.edges.DirectedEdge;
+import week2.structures.graphs.EdgeWeightedDirectedGraph;
 
 import java.util.List;
 

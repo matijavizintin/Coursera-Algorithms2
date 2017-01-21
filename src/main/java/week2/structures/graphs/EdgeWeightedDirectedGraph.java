@@ -1,6 +1,7 @@
-package week2.graphs;
+package week2.structures.graphs;
 
 import week1.graphs.directed.DirectedGraph;
+import week2.structures.edges.DirectedEdge;
 
 /**
  * Created by Matija Vižintin
@@ -26,7 +27,7 @@ public class EdgeWeightedDirectedGraph extends EdgeWeightedGraph<DirectedEdge> i
     }
 
     @Override
-    public DirectedGraph reverse() {
+    public DirectedGraph<DirectedEdge> reverse() {
         throw new UnsupportedOperationException();
     }
 

@@ -1,8 +1,8 @@
 package week2;
 
 import org.junit.Test;
-import week2.graphs.EdgeWeightedUndirectedGraph;
-import week2.graphs.UndirectedEdge;
+import week2.structures.graphs.EdgeWeightedUndirectedGraph;
+import week2.structures.edges.UndirectedEdge;
 import week2.mst.KruskalMST;
 import week2.mst.PrimMST;
 

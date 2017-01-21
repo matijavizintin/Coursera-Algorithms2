@@ -1,7 +1,7 @@
 package week2;
 
 import org.junit.Test;
-import week2.graphs.EdgeWeightedDirectedGraph;
+import week2.structures.graphs.EdgeWeightedDirectedGraph;
 import week2.shortestpaths.BellmanFordShortestPaths;
 import week2.shortestpaths.DijkstraShortestPaths;
 import week2.shortestpaths.EdgeWeightedDAGShortestPaths;

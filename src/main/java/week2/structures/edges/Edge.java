@@ -1,4 +1,4 @@
-package week2.graphs;
+package week2.structures.edges;
 
 /**
  * Created by Matija Vižintin
