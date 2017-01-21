@@ -9,14 +9,13 @@ import java.util.stream.Collectors;
 
 
 /**
- *
  * Home-made extra naive algorithm for computing mst.
- *
+ * <p>
  * This is basically made from pseudo code:
  * while (len(mst) < len(graph) -1)
- *  find cut with no black crossing edges
- *  add edge with min edge to black edges
- *
+ *    find cut with no black crossing edges
+ *    add edge with min edge to black edges
+ * <p>
  * Created by matijav on 21/01/2017.
  */
 public class GreedyMST implements MST {
@@ -115,11 +114,8 @@ public class GreedyMST implements MST {
 
             // check if ALL adjacent edges aren't black that aren't in the cut
             for (UndirectedEdge undirectedEdge : adj) {
-                int v = undirectedEdge.either();
-                int w = undirectedEdge.other(v);
-
                 // if edge is in the cut then is good
-                if (cut.contains(w) && cut.contains(v)) {
+                if (cut.contains(undirectedEdge.either()) && cut.contains(undirectedEdge.other())) {
                     continue;
                 }
 
@@ -138,11 +134,7 @@ public class GreedyMST implements MST {
         cut.forEach(v -> graph.adjacent(v).forEach(adj::add));
 
         // filter out non-crossing edges
-        List<UndirectedEdge> filtered = adj.stream().filter(e -> {
-            int v = e.either();
-            int w = e.other(v);
-            return !cut.contains(v) || !cut.contains(w);
-        }).collect(Collectors.toList());
+        List<UndirectedEdge> filtered = adj.stream().filter(e -> !cut.contains(e.either()) || !cut.contains(e.other())).collect(Collectors.toList());
 
         return Collections.min(filtered);
     }

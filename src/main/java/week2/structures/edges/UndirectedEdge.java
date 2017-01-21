@@ -27,6 +27,11 @@ public class UndirectedEdge extends Edge {
         return v == this.v ? w : this.v;
     }
 
+    // returns the other end
+    public int other() {
+        return w;
+    }
+
     public boolean isAny(int v) {
         return this.v == v || this.w == v;
     }
