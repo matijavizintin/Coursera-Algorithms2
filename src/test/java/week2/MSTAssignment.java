@@ -33,44 +33,44 @@ public class MSTAssignment {
 
     private EdgeWeightedUndirectedGraph createGraph() {
         String s = "F-A    17\n" +
-                   "    A-B    16\n" +
-                   "    B-C    10\n" +
-                   "    H-B     7\n" +
-                   "    G-B     6\n" +
-                   "    F-B     3\n" +
-                   "    D-C     5\n" +
-                   "    C-H     4\n" +
-                   "    E-D    12\n" +
-                   "    I-D    11\n" +
-                   "    D-H     2\n" +
-                   "    J-E    14\n" +
-                   "    I-E    13\n" +
-                   "    G-F     1\n" +
-                   "    G-H     8\n" +
-                   "    I-H     9\n" +
-                   "    J-I    15\n";
+                "    B-A    11\n" +
+                "    G-A     9\n" +
+                "    B-H    13\n" +
+                "    C-B     5\n" +
+                "    B-G     1\n" +
+                "    D-C     4\n" +
+                "    H-C     3\n" +
+                "    D-E    14\n" +
+                "    I-D    10\n" +
+                "    H-D     2\n" +
+                "    J-E     8\n" +
+                "    E-I     7\n" +
+                "    F-G    16\n" +
+                "    G-H     6\n" +
+                "    I-H    15\n" +
+                "    I-J    12";
 
         return GraphBuilderHelper.convertToGraph(s, "-", new EdgeWeightedUndirectedGraph(10));
     }
 
     private EdgeWeightedUndirectedGraph createGraph2() {
-        String s = "A-B      16\n" +
-                   "    A-F       8\n" +
-                   "    A-G       2\n" +
-                   "    G-B      15\n" +
-                   "    B-C      14\n" +
-                   "    H-B      12\n" +
-                   "    C-H      13\n" +
-                   "    C-D       5\n" +
-                   "    E-D      11\n" +
-                   "    D-H      10\n" +
-                   "    D-I       6\n" +
-                   "    E-J       7\n" +
-                   "    I-E       4\n" +
-                   "    F-G       3\n" +
-                   "    G-H       9\n" +
-                   "    I-H       1\n" +
-                   "    I-J      17\n";
+        String s = "A-B      12\n" +
+                "    G-A       4\n" +
+                "    F-A       2\n" +
+                "    C-B      11\n" +
+                "    G-B      10\n" +
+                "    H-B       1\n" +
+                "    C-I      15\n" +
+                "    C-D      14\n" +
+                "    H-C       9\n" +
+                "    D-I      13\n" +
+                "    E-D       6\n" +
+                "    E-J      17\n" +
+                "    I-E       3\n" +
+                "    F-G       8\n" +
+                "    G-H      16\n" +
+                "    H-I       7\n" +
+                "    I-J       5";
 
         return GraphBuilderHelper.convertToGraph(s, "-", new EdgeWeightedUndirectedGraph(10));
     }
