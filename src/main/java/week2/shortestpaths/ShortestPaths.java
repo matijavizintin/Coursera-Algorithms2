@@ -14,9 +14,9 @@ import java.util.List;
 public abstract class ShortestPaths {
     protected static final boolean debug = false;
 
-    protected DirectedEdge[] edgeTo;
-    protected double[] distTo;
-    protected int start;
+    private DirectedEdge[] edgeTo;
+    double[] distTo;
+    int start;
     protected EdgeWeightedDirectedGraph graph;
 
     protected ShortestPaths(EdgeWeightedDirectedGraph graph, int start, Object param) {
@@ -45,6 +45,7 @@ public abstract class ShortestPaths {
         // this can be used to override something
     }
 
+    // implement in algorithm
     protected abstract void findShortestPaths();
 
     protected boolean relax(DirectedEdge edge) {

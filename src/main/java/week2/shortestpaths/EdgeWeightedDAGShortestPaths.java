@@ -9,6 +9,8 @@ import java.util.List;
  * Created by Matija Vižintin
  * Date: 05. 12. 2015
  * Time: 16:16
+ *
+ * Works on graphs with no cycles --> DAG because is based on topological order
  */
 public class EdgeWeightedDAGShortestPaths extends ShortestPaths {
     private List<Integer> debugForcedTopological;
@@ -20,16 +22,22 @@ public class EdgeWeightedDAGShortestPaths extends ShortestPaths {
     @Override
     protected void findShortestPaths() {
         // compute topologicalSort order of a DAG
-        TopologicalSort topologicalSort = new TopologicalSort(graph);
+        Iterable<Integer> topologicalOrder;
+        if (debugForcedTopological != null) {
+            topologicalOrder = debugForcedTopological;
+        } else {
+            topologicalOrder = new TopologicalSort(graph).getOrder();
+        }
 
         // go through vertices and relax adjacent
-        for (Integer v : debugForcedTopological != null ? debugForcedTopological : topologicalSort.getOrder()) {
+        for (Integer v : topologicalOrder) {
             for (DirectedEdge directedEdge : graph.adjacent(v)) {
                 relax(directedEdge);
             }
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void hook(Object param) {
         this.debugForcedTopological = (List<Integer>)param;

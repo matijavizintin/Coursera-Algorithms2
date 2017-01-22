@@ -1,8 +1,8 @@
 package week2.shortestpaths;
 
-import edu.princeton.cs.algs4.IndexMinPQ;
 import week2.structures.edges.DirectedEdge;
 import week2.structures.graphs.EdgeWeightedDirectedGraph;
+import week2.structures.pq.IndexMinPQ;
 
 /**
  * Created by Matija Vižintin
