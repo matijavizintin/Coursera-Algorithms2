@@ -13,7 +13,7 @@ public class DijkstraShortestPaths extends ShortestPaths {
     private IndexMinPQ<Double> verticesPQ;
 
     public DijkstraShortestPaths(EdgeWeightedDirectedGraph graph, int start) {
-        super(graph, start);
+        super(graph, start, null);
     }
 
     @Override

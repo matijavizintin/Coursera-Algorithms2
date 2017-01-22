@@ -40,13 +40,13 @@ public class ShortestPathsTest {
         print(sp);
 
         // compare with others
-        compareSP(sp, new EdgeWeightedDAGShortestPaths(graph, 0));
+        compareSP(sp, new EdgeWeightedDAGShortestPaths(graph, 0, null));
         compareSP(sp, new BellmanFordShortestPaths(graph, 0));
     }
 
     @Test
     public void dagSPTest() {
-        EdgeWeightedDAGShortestPaths sp = new EdgeWeightedDAGShortestPaths(buildGraph2(), 0);
+        EdgeWeightedDAGShortestPaths sp = new EdgeWeightedDAGShortestPaths(buildGraph2(), 0, null);
         print(sp);
 
         // compare with dijkstra
@@ -60,7 +60,7 @@ public class ShortestPathsTest {
 
         // compare with dijkstra and EWDAGSP
         compareSP(sp, new DijkstraShortestPaths(buildGraph3(), 0));
-        compareSP(sp, new EdgeWeightedDAGShortestPaths(buildGraph3(), 0));
+        compareSP(sp, new EdgeWeightedDAGShortestPaths(buildGraph3(), 0, null));
     }
 
     // build graph

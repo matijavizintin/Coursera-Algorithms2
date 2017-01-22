@@ -11,9 +11,7 @@ import java.util.List;
  * Time: 16:16
  */
 public class EdgeWeightedDAGShortestPaths extends ShortestPaths {
-    public EdgeWeightedDAGShortestPaths(EdgeWeightedDirectedGraph graph, int start) {
-        super(graph, start);
-    }
+    private List<Integer> debugForcedTopological;
 
     public EdgeWeightedDAGShortestPaths(EdgeWeightedDirectedGraph graph, int start, List<Integer> debugForcedTopological) {
         super(graph, start, debugForcedTopological);
@@ -30,5 +28,10 @@ public class EdgeWeightedDAGShortestPaths extends ShortestPaths {
                 relax(directedEdge);
             }
         }
+    }
+
+    @Override
+    protected void hook(Object param) {
+        this.debugForcedTopological = (List<Integer>)param;
     }
 }

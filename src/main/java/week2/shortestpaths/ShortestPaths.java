@@ -13,24 +13,19 @@ import java.util.List;
  */
 public abstract class ShortestPaths {
     protected static final boolean debug = false;
-    protected List<Integer> debugForcedTopological;
 
     protected DirectedEdge[] edgeTo;
     protected double[] distTo;
     protected int start;
     protected EdgeWeightedDirectedGraph graph;
 
-    public ShortestPaths(EdgeWeightedDirectedGraph graph, int start) {
-        this(graph, start, null);
-    }
-
-    protected ShortestPaths(EdgeWeightedDirectedGraph graph, int start, List<Integer> debugForcedTopological) {
+    protected ShortestPaths(EdgeWeightedDirectedGraph graph, int start, Object param) {
         this.graph = graph;
         this.start = start;
-        this.debugForcedTopological = debugForcedTopological;
 
         // init
         initStructures();
+        hook(param);
 
         // execute algorithm
         findShortestPaths();
@@ -44,6 +39,10 @@ public abstract class ShortestPaths {
             distTo[i] = Double.POSITIVE_INFINITY;
         }
         distTo[start] = 0;  // update start pos
+    }
+
+    protected void hook(Object param) {
+        // this can be used to override something
     }
 
     protected abstract void findShortestPaths();

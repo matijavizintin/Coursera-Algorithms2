@@ -10,7 +10,7 @@ import week2.structures.graphs.EdgeWeightedDirectedGraph;
  */
 public class BellmanFordShortestPaths extends ShortestPaths {
     public BellmanFordShortestPaths(EdgeWeightedDirectedGraph graph, int start) {
-        super(graph, start);
+        super(graph, start, null);
     }
 
     @Override
