@@ -12,11 +12,11 @@ import java.util.List;
  * Time: 12:31
  */
 public abstract class ShortestPaths {
-    protected static final boolean debug = false;
+    protected static final boolean debug = true;
 
     private DirectedEdge[] edgeTo;
-    double[] distTo;
-    int start;
+    protected double[] distTo;
+    protected int start;
     protected EdgeWeightedDirectedGraph graph;
 
     protected ShortestPaths(EdgeWeightedDirectedGraph graph, int start, Object param) {
@@ -89,8 +89,8 @@ public abstract class ShortestPaths {
     }
 
     protected void debugPrintDist() {
-        for (int i = 0; i < distTo.length; i++) {
-            System.out.printf("%.0f ", distTo[i]);
+        for (double dist : distTo) {
+            System.out.printf("%.0f ", dist);
         }
         System.out.println("\n");
     }
