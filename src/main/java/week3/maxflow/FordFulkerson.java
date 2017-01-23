@@ -12,7 +12,7 @@ import week3.graphs.FlowNetwork;
  */
 public class FordFulkerson {
     private boolean[] marked;
-    public FlowEdge[] edgeTo;
+    private FlowEdge[] edgeTo;
     private double value;
 
     public Stack<Integer> debug = new Stack<>();

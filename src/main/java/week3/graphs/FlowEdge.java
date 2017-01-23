@@ -28,18 +28,22 @@ public class FlowEdge {
         return v == this.v ? this.w : this.v;
     }
 
+    // edge capacity
     public double capacity() {
         return capacity;
     }
 
+    // capacity used
     public double flow() {
         return flow;
     }
 
+    // capacity left / flow
     public double residualCapacityTo(int v) {
         return v == this.w ? capacity - flow : flow;
     }
 
+    // add flow / remove flow
     public void addResidualFlowTo(int v, double delta) {
         if (v == this.w) flow += delta;
         else flow -= delta;

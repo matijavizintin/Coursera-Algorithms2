@@ -26,6 +26,7 @@ public class FlowNetwork {
         }
     }
 
+    // add both ways like in undirected graphs
     public void addEdge(FlowEdge flowEdge) {
         adj[flowEdge.from()].add(flowEdge);
         adj[flowEdge.to()].add(flowEdge);
