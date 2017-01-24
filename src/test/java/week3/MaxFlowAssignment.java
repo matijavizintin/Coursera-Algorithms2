@@ -32,46 +32,46 @@ public class MaxFlowAssignment {
     }
 
     public FlowNetwork createNetwork() {
-        String s = "A->B     17  /  17\n" +
-                "    A->F     10  /  20\n" +
-                "    A->G     30  /  30\n" +
-                "    B->C     25  /  26\n" +
-                "    C->D     10  /  19\n" +
-                "    C->G      8  /   8\n" +
-                "    C->H      7  /   9\n" +
-                "    D->E      5  /   5\n" +
-                "    D->I      0  /  11\n" +
-                "    D->J     27  /  42\n" +
-                "    E->J      5  /   5\n" +
-                "    F->G     10  /  18\n" +
-                "    G->B      8  /   8\n" +
-                "    G->H     40  /  40\n" +
-                "    H->D     22  /  22\n" +
-                "    H->I     25  /  25\n" +
-                "    I->J     25  /  25";
+        String s = "A->B     23  /  32\n" +
+                "    A->F      5  /  12\n" +
+                "    A->G      0  /   5\n" +
+                "    B->C      0  /   7\n" +
+                "    B->G      0  /  14\n" +
+                "    B->H     23  /  26\n" +
+                "    C->D      9  /   9\n" +
+                "    C->H      0  /   7\n" +
+                "    D->E     10  /  12\n" +
+                "    D->J      6  /   9\n" +
+                "    E->J     10  /  10\n" +
+                "    F->G      5  /   6\n" +
+                "    G->H      5  /   5\n" +
+                "    H->I     28  /  28\n" +
+                "    I->C      9  /  13\n" +
+                "    I->D      7  /   7\n" +
+                "    I->J     12  /  30";
 
 
         return NetworkBuilderHelper.convertToNetwork(s, "->", 10);
     }
 
     public FlowNetwork createNetwork1() {
-        String s = "A->F      8  /   8\n" +
-                "    A->G      9  /  18\n" +
-                "    A->B      9  /  12\n" +
-                "    B->C      9  /   9\n" +
-                "    B->G      0  /  10\n" +
-                "    G->C      3  /   3\n" +
-                "    C->D     12  /  15\n" +
-                "    C->H      0  /   5\n" +
-                "    D->H      0  /   6\n" +
-                "    D->E      6  /   6\n" +
-                "    D->I      4  /  14\n" +
-                "    D->J      2  /  13\n" +
-                "    E->J      6  /  10\n" +
-                "    F->G      8  /   9\n" +
-                "    G->H     14  /  16\n" +
-                "    H->I     14  /  14\n" +
-                "    I->J     18  /  18";
+        String s = "A->B      37  /   37\n" +
+                "    A->F      11  /  11\n" +
+                "    A->G      16  /  29\n" +
+                "    B->C      37  /   40\n" +
+                "    B->G      0  /  7\n" +
+                "    C->I      10  /   10\n" +
+                "    C->G     0  /  9\n" +
+                "    C->H      1  /   8\n" +
+                "    C->D      26  /   29\n" +
+                "    I->D      0 /   11\n" +
+                "    D->E      9  /   9\n" +
+                "    D->J      17  /  18\n" +
+                "    E->J      9  /  10\n" +
+                "    F->G      11  /   11\n" +
+                "    G->H     27  /  27\n" +
+                "    H->I     28  /  28\n" +
+                "    I->J     38  /  39";
         return NetworkBuilderHelper.convertToNetwork(s, "->", 10);
     }
 }
