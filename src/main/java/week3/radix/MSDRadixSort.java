@@ -9,9 +9,11 @@ package week3.radix;
  */
 public class MSDRadixSort {
     private static final boolean DEBUG = true;
+    private static final int DEBUG_PRINT_COUNT = 3;
     private static int sortCount = 0;
+
     private static final int INSERTION_SORT_CUT_OFF = 7;
-    private final int R = 256;
+    private static final int R = 256;
 
     public void sort(String[] a) {
         final int N = a.length;
@@ -26,11 +28,7 @@ public class MSDRadixSort {
 
         // check for cutoff
         if (!DEBUG && hi - lo < INSERTION_SORT_CUT_OFF) {
-            for (int i = lo; i <= hi; i++) {
-                for (int j = i; j > lo && less(a[j], a[j - 1], d); j--) {
-                    exchange(a, j, j - 1);
-                }
-            }
+            insertionSort(a, lo, hi, d);
             return;
         }
 
@@ -45,7 +43,7 @@ public class MSDRadixSort {
             count[r + 1] += count[r];
         }
 
-        // move to aux array in sorted order an copy back to original array
+        // move to aux array in sorted order and copy back to original array
         for (int i = lo; i <= hi; i++) {
             aux[count[charAt(a[i], d) + 1]++] = a[i];
         }
@@ -53,7 +51,7 @@ public class MSDRadixSort {
             a[i] = aux[i - lo];
         }
 
-        if (DEBUG && ++sortCount == 3) {
+        if (DEBUG && ++sortCount == DEBUG_PRINT_COUNT) {
             System.out.println("sortCount = " + sortCount);
             for (String element : a) {
                 System.out.print(element + " ");
@@ -64,6 +62,14 @@ public class MSDRadixSort {
         // recursive sub-array sort
         for (int r = 0; r < R; r++) {
             sort(a, aux, lo + count[r], lo + count[r + 1] - 1, d + 1);
+        }
+    }
+
+    private void insertionSort(String[] a, int lo, int hi, int d) {
+        for (int i = lo; i <= hi; i++) {
+            for (int j = i; j > lo && less(a[j], a[j - 1], d); j--) {
+                exchange(a, j, j - 1);
+            }
         }
     }
 
