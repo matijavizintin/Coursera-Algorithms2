@@ -6,7 +6,7 @@ package week3.radix;
  * Time: 13:34
  */
 public class ThreeWayQuickSort {
-    public static final boolean DEBUG = true;
+    public static boolean DEBUG = false;
 
     public void sort(String[] a) {
         sort(a, 0, a.length - 1, 0);

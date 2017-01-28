@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  * Time: 21:53
  */
 public class RadixSortTest {
-    private final int N = 1000000;
+    private final int N = 1000 * 1000;
     private final int W_min = 10;
     private final int W_max = 15;
 
@@ -75,7 +75,7 @@ public class RadixSortTest {
 
     @Test
     public void longestRepeatedSubstringTest() {
-        String[] input = StringArraysGenerator.generate(1000, W_min, W_max);
+        String[] input = StringArraysGenerator.generate(N, W_min, W_max);
         String joined = Joiner.on("").join(input);      // estimated 12.5 * 1k characters
         System.out.println("Input length: " + joined.length());
 

@@ -8,12 +8,11 @@ package week3.radix;
  * MSD = most significant digit
  */
 public class MSDRadixSort {
-    private static final boolean DEBUG = true;
-    private static final int DEBUG_PRINT_COUNT = 3;
-    private static int sortCount = 0;
-
     private static final int INSERTION_SORT_CUT_OFF = 7;
     private static final int R = 256;
+    public static boolean DEBUG = false;
+    public static int DEBUG_PRINT_COUNT = 3;
+    public static int sortCount = 0;
 
     public void sort(String[] a) {
         final int N = a.length;

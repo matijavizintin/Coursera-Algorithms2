@@ -8,7 +8,7 @@ package week3.radix;
  * LSD = least significant digit not to be confused :)
  */
 public class LSDRadixSort {
-    private static final boolean DEBUG = true;
+    public static boolean DEBUG = false;
 
     public void sort(String[] array, int W) {
         int R = 256;
