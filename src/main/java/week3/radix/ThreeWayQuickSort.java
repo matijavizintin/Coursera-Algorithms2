@@ -12,7 +12,7 @@ public class ThreeWayQuickSort {
         sort(a, 0, a.length - 1, 0);
     }
 
-    public void sort(String[] a, int lo, int hi, int d) {
+    private void sort(String[] a, int lo, int hi, int d) {
         if (hi <= lo) return;
 
         // init vars
@@ -28,7 +28,7 @@ public class ThreeWayQuickSort {
             else if (t > v) exchange(a, i, gt--);   // greater than pivot - decrease the upper limit
             else i++;
 
-            if (DEBUG) {
+            if (DEBUG && i > gt) {
                 System.out.printf("lo = %d, hi = %d, lt = %d, i = %d, gt = %d\n", lo, hi, lt, i, gt);
                 for (String element : a) {
                     System.out.print(element + " ");

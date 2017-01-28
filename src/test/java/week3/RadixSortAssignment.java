@@ -14,7 +14,7 @@ public class RadixSortAssignment {
 
     @Test
     public void quiz1() {
-        String input = "3113 2414 4244 4313 2341 1422 1344 4314 1434 1144";
+        String input = "4421 3123 1114 1413 2324 4341 2423 1121 3321 3114";
 
         LSDRadixSort sort = new LSDRadixSort();
         sort.sort(parseString(input), 4);
@@ -22,7 +22,7 @@ public class RadixSortAssignment {
 
     @Test
     public void quiz2() {
-        String input = "2441 1412 4423 1144 1324 1221 3233 3141 3241 4213 4231 3212 1243 1131 2433";
+        String input = "1241 1234 3211 1443 3332 2324 2411 1442 1324 1211 4224 4131 4314 4412 1311";
 
         MSDRadixSort sort = new MSDRadixSort();
         sort.sort(parseString(input));
@@ -30,7 +30,7 @@ public class RadixSortAssignment {
 
     @Test
     public void quiz3() {
-        String input = "4436 2465 1356 5442 4224 5621 1445 4615 4255 4635";
+        String input = "4163 3245 4334 3662 6124 1432 6264 4341 6532 4464";
 
         ThreeWayQuickSort sort = new ThreeWayQuickSort();
         sort.sort(parseString(input));
