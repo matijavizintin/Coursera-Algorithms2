@@ -11,11 +11,10 @@ import week3.graphs.FlowNetwork;
  * Time: 18:52
  */
 public class FordFulkerson {
+    public Stack<Integer> debug = new Stack<>();
     private boolean[] marked;
     private FlowEdge[] edgeTo;
     private double value;
-
-    public Stack<Integer> debug = new Stack<>();
 
     public FordFulkerson(FlowNetwork flowNetwork, int s, int t) {
         // compute max flow
@@ -49,7 +48,7 @@ public class FordFulkerson {
         q.enqueue(s);
         marked[s] = true;
 
-        // loop until the q is empty
+        // loop until the q is empty (this is basically BFS)
         while (!q.isEmpty()) {
             int v = q.dequeue();
 
@@ -74,6 +73,14 @@ public class FordFulkerson {
         return value;
     }
 
+    /**
+     * Min cut is computed in the last loop where there is no augmenting path. All vertices that were marked by
+     * hasAugmentingPath (BFS that stops when edges are full) are in min-cut. All edges from the min-cut are always
+     * full.
+     *
+     * @param v int
+     * @return is v in min-cut
+     */
     public boolean inCut(int v) {
         return marked[v];
     }
