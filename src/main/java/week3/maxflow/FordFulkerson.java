@@ -69,6 +69,11 @@ public class FordFulkerson {
         return marked[t];
     }
 
+    /**
+     * value == capacity of the min flow
+     *
+     * @return max-flow
+     */
     public double value() {
         return value;
     }
@@ -76,7 +81,7 @@ public class FordFulkerson {
     /**
      * Min cut is computed in the last loop where there is no augmenting path. All vertices that were marked by
      * hasAugmentingPath (BFS that stops when edges are full) are in min-cut. All edges from the min-cut are always
-     * full.
+     * full and all edges to the min-cut are always empty. The sum of outgoing (incoming are empty) edges == max-flow
      *
      * @param v int
      * @return is v in min-cut
