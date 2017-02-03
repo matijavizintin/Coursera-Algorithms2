@@ -1,4 +1,4 @@
-package week4;
+package week4.trie;
 
 /**
  * Created by matijav on 30/01/2017.

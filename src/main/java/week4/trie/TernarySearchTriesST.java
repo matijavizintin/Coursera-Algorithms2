@@ -1,7 +1,6 @@
 package week4.trie;
 
 import edu.princeton.cs.algs4.Queue;
-import week4.Backend;
 
 /**
  * Created by matijav on 31/01/2017.
