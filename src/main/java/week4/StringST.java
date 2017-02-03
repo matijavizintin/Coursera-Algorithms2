@@ -25,4 +25,16 @@ public class StringST<VAL> {
     public void delete(String key) {
         backend.delete(key);
     }
+
+    public Iterable<String> keys() {
+        return backend.keys();
+    }
+
+    public Iterable<String> keysWithPrefix(String prefix) {
+        return backend.keysWithPrefix(prefix);
+    }
+
+    public String longestPrefixOf(String key) {
+        return backend.longestPrefixOf(key);
+    }
 }

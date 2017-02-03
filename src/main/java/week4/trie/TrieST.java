@@ -1,5 +1,6 @@
 package week4.trie;
 
+import edu.princeton.cs.algs4.Queue;
 import week4.Backend;
 
 /**
@@ -7,14 +8,24 @@ import week4.Backend;
  */
 public class TrieST<VAL> implements Backend<VAL> {
     private static final int R = 256;
-    private Node root = new Node();
+    public boolean debug = false;
+    public int debugCountNodes = 0;
+    private Node root;
+
+    public TrieST() {
+    }
 
     public void put(String key, VAL value) {
         root = put(root, key, value, 0);
     }
 
     private Node put(Node x, String key, VAL value, int d) {
-        if (x == null) x = new Node();
+        if (x == null) {
+            x = new Node();
+            if (debug) {
+                debugCountNodes++;
+            }
+        }
 
         if (d == key.length()) {
             x.value = value;
@@ -72,6 +83,47 @@ public class TrieST<VAL> implements Backend<VAL> {
             }
         }
         return false;
+    }
+
+    @Override
+    public Iterable<String> keys() {
+        Queue<String> q = new Queue<>();
+        collect(root, "", q);
+        return q;
+    }
+
+    private void collect(Node x, String prefix, Queue<String> q) {
+        if (x == null) return;
+        if (x.value != null) {
+            q.enqueue(prefix);
+        }
+
+        for (char i = 0; i < R; i++) {
+            collect(x.next[i], prefix + i, q);
+        }
+    }
+
+    @Override
+    public Iterable<String> keysWithPrefix(String prefix) {
+        Node x = get(root, prefix, 0);
+        Queue<String> q = new Queue<>();
+        collect(x, prefix, q);
+        return q;
+    }
+
+    @Override
+    public String longestPrefixOf(String key) {
+        int len = search(root, key, 0, 0);
+        return key.substring(0, len);
+    }
+
+    private int search(Node x, String query, int d, int length) {
+        if (x == null) return length;
+        if (x.value != null) length = d;
+        if (d == query.length()) return length;
+
+        char c = query.charAt(d);
+        return search(x.next[c], query, d + 1, length);
     }
 
     private static class Node {

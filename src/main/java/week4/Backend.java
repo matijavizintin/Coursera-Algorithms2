@@ -12,4 +12,10 @@ public interface Backend<VAL> {
     boolean contains(String key);
 
     void delete(String key);
+
+    Iterable<String> keys();
+
+    Iterable<String> keysWithPrefix(String prefix);
+
+    String longestPrefixOf(String key);
 }
