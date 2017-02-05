@@ -4,8 +4,8 @@ package week4.substringsearch;
  * Created by matijav on 05/02/2017.
  */
 public class RabinKarp {
-    private static final int R = 256;
-    private static final long Q = 179426549;
+    public static int R = 256;
+    public static long Q = 179426549;
 
     private long patternHash;       // pattern hash value
     private int M;

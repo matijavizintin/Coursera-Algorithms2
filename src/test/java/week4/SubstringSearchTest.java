@@ -10,7 +10,7 @@ import week4.substringsearch.RabinKarp;
 /**
  * Created by matijav on 05/02/2017.
  */
-public class TestSubstringSearch {
+public class SubstringSearchTest {
 
     @Test
     public void testBruteForce1() {

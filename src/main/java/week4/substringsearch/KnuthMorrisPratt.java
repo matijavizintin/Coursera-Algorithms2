@@ -5,13 +5,11 @@ package week4.substringsearch;
  */
 public class KnuthMorrisPratt {
     private static final int R = 256;
-
-    private final String pattern;
     private final int M;           // final state
     private final int[][] dfa;     // array[next_char][state]
+    public char debugChar;
 
     public KnuthMorrisPratt(String pattern) {
-        this.pattern = pattern;
         this.M = pattern.length();
 
         // compute DFA
@@ -41,4 +39,9 @@ public class KnuthMorrisPratt {
         else return N;
     }
 
+    public void debugPrint() {
+        for (int i = 0; i < M; i++) {
+            System.out.print(dfa[debugChar][i] + " ");
+        }
+    }
 }

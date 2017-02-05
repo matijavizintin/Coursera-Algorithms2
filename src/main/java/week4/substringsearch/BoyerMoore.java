@@ -5,7 +5,7 @@ package week4.substringsearch;
  */
 public class BoyerMoore {
     private static final int R = 256;
-
+    public boolean debug = true;
     private int M;
     private String pattern;
     private int[] right;
@@ -27,6 +27,9 @@ public class BoyerMoore {
 
             // check if we found a match backwards
             for (int j = M - 1; j >= 0; j--) {
+                if (debug && j == M - 1) {
+                    System.out.print(text.charAt(i + j) + " ");
+                }
 
                 // if character doesn't match then skip to the most right match
                 if (pattern.charAt(j) != text.charAt(i + j)) {
