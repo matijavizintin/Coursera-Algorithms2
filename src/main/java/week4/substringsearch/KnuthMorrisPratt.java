@@ -38,7 +38,7 @@ public class KnuthMorrisPratt {
         }
 
         if (j == M) return i - M;
-        else return M;
+        else return N;
     }
 
 }

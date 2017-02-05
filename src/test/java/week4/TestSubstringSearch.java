@@ -2,6 +2,7 @@ package week4;
 
 import org.junit.Assert;
 import org.junit.Test;
+import week4.substringsearch.BoyerMoore;
 import week4.substringsearch.BruteForce;
 import week4.substringsearch.KnuthMorrisPratt;
 
@@ -57,8 +58,30 @@ public class TestSubstringSearch {
         Assert.assertEquals(input2.length() - pattern.length(), res);
 
         pattern = "missmatch";
-        res = BruteForce.search(pattern, input);
+        res = new KnuthMorrisPratt(pattern).search(input);
         Assert.assertEquals(input.length(), res);
+    }
+
+    @Test
+    public void testBM() {
+        String input = generateInput();
+        String pattern = "fringilla";
+        int res = new BoyerMoore(pattern).search(input);
+        Assert.assertEquals(input.length() - pattern.length() - 1, res);
+
+        String input2 = generateInput2();
+        pattern = "aaaab";
+        res = new BoyerMoore(pattern).search(input2);
+        Assert.assertEquals(input2.length() - pattern.length(), res);
+
+        pattern = "missmatch";
+        res = new BoyerMoore(pattern).search(input);
+        Assert.assertEquals(input.length(), res);
+
+        String input3 = generateInput3(1000 * 1000);
+        pattern = "abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
+        res = new BoyerMoore(pattern).search(input3);
+        Assert.assertEquals(input3.length(), res);
     }
 
     private String generateInput() {
@@ -67,5 +90,14 @@ public class TestSubstringSearch {
 
     private String generateInput2() {
         return "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab";
+    }
+
+    private String generateInput3(int size) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < size; i++) {
+            sb.append('b');
+        }
+        return sb.toString();
     }
 }
