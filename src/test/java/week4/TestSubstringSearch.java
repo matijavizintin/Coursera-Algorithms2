@@ -3,6 +3,7 @@ package week4;
 import org.junit.Assert;
 import org.junit.Test;
 import week4.substringsearch.BruteForce;
+import week4.substringsearch.KnuthMorrisPratt;
 
 /**
  * Created by matijav on 05/02/2017.
@@ -16,10 +17,14 @@ public class TestSubstringSearch {
         int res = BruteForce.search(pattern, input);
         Assert.assertEquals(input.length() - pattern.length() - 1, res);
 
-        input = generateInput2();
+        String input2 = generateInput2();
         pattern = "aaaab";
+        res = BruteForce.search(pattern, input2);
+        Assert.assertEquals(input2.length() - pattern.length(), res);
+
+        pattern = "missmatch";
         res = BruteForce.search(pattern, input);
-        Assert.assertEquals(input.length() - pattern.length(), res);
+        Assert.assertEquals(input.length(), res);
     }
 
     @Test
@@ -29,10 +34,31 @@ public class TestSubstringSearch {
         int res = BruteForce.search2(pattern, input);
         Assert.assertEquals(input.length() - pattern.length() - 1, res);
 
-        input = generateInput2();
+        String input2 = generateInput2();
         pattern = "aaaab";
-        res = BruteForce.search2(pattern, input);
-        Assert.assertEquals(input.length() - pattern.length(), res);
+        res = BruteForce.search2(pattern, input2);
+        Assert.assertEquals(input2.length() - pattern.length(), res);
+
+        pattern = "missmatch";
+        res = BruteForce.search(pattern, input);
+        Assert.assertEquals(input.length(), res);
+    }
+
+    @Test
+    public void testKMP() {
+        String input = generateInput();
+        String pattern = "fringilla";
+        int res = new KnuthMorrisPratt(pattern).search(input);
+        Assert.assertEquals(input.length() - pattern.length() - 1, res);
+
+        String input2 = generateInput2();
+        pattern = "aaaab";
+        res = new KnuthMorrisPratt(pattern).search(input2);
+        Assert.assertEquals(input2.length() - pattern.length(), res);
+
+        pattern = "missmatch";
+        res = BruteForce.search(pattern, input);
+        Assert.assertEquals(input.length(), res);
     }
 
     private String generateInput() {
