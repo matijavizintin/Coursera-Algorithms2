@@ -103,8 +103,10 @@ public class TernarySearchTriesST<VAL> implements Backend<VAL> {
 
     @Override
     public Iterable<String> keysWithPrefix(String prefix) {
-        Node x = get(root, prefix, 0);
         Queue<String> q = new Queue<>();
+        Node x = get(root, prefix, 0);
+        if (x == null) return q;
+
         collect(x.left, prefix, q);
         collect(x.mid, prefix, q);
         collect(x.right, prefix, q);

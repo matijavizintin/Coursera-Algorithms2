@@ -79,7 +79,7 @@ public class SubstringSearchTest {
         res = new BoyerMoore(pattern).search(input);
         Assert.assertEquals(input.length(), res);
 
-        String input3 = generateInput3(100 * 1000 * 1000);
+        String input3 = generateInput3(1000 * 1000);
         pattern = "abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
         res = new BoyerMoore(pattern).search(input3);
         Assert.assertEquals(input3.length(), res);
@@ -101,7 +101,7 @@ public class SubstringSearchTest {
         res = new RabinKarp(pattern).search(input);
         Assert.assertEquals(input.length(), res);
 
-        String input3 = generateInput3(100 * 1000 * 1000);
+        String input3 = generateInput3(1000 * 1000);
         pattern = "abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
         res = new RabinKarp(pattern).search(input3);
         Assert.assertEquals(input3.length(), res);
