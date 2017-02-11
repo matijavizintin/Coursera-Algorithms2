@@ -1,4 +1,4 @@
-package week5.re;
+package week5.regex;
 
 import com.google.common.collect.Lists;
 import edu.princeton.cs.algs4.Bag;

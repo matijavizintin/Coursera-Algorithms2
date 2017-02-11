@@ -1,4 +1,4 @@
-package week5.re;
+package week5.regex;
 
 import week1.graphs.directed.DirectedGraph;
 

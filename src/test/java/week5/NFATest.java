@@ -2,7 +2,7 @@ package week5;
 
 import org.junit.Assert;
 import org.junit.Test;
-import week5.re.NFA;
+import week5.regex.NFA;
 
 /**
  * Created by matijav on 11/02/2017.
