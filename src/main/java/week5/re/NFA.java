@@ -1,14 +1,20 @@
 package week5.re;
 
+import com.google.common.collect.Lists;
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.Stack;
 import week1.graphs.directed.DirectGraphImpl;
 import week1.graphs.directed.DirectedGraph;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by matijav on 11/02/2017.
  */
 public class NFA {
+    public boolean DEBUG = false;
+
     private char[] regex;
     private DirectedGraph<Integer> graph;
     private int M;                          // number of states
@@ -48,6 +54,12 @@ public class NFA {
             for (int v = 0; v < graph.V(); v++) {
                 if (dfs.marked(v)) pc.add(v);
             }
+        }
+
+        if (DEBUG) {
+            List<Integer> list = Lists.newArrayList(pc);
+            Collections.sort(list);
+            list.forEach(x -> System.out.print(x + " "));
         }
 
         // accept if can end in final state (==M)
@@ -102,5 +114,9 @@ public class NFA {
             regex = '(' + regex + ')';
         }
         return regex;
+    }
+
+    public void debugPrintGraph() {
+        System.out.println(graph);
     }
 }
