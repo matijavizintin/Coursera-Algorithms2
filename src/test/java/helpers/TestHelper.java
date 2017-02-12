@@ -1,4 +1,4 @@
-package week4.helpers;
+package helpers;
 
 import org.junit.Assert;
 

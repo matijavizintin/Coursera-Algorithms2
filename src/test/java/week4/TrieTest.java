@@ -1,9 +1,9 @@
 package week4;
 
 import com.google.common.collect.Lists;
+import helpers.TestHelper;
 import org.junit.Assert;
 import org.junit.Test;
-import week4.helpers.TestHelper;
 import week4.trie.TrieST;
 
 /**
