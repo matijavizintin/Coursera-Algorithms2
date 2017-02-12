@@ -1,7 +1,6 @@
 package week5.datacompression.huffman;
 
 import edu.princeton.cs.algs4.MinPQ;
-import sun.plugin.dom.exception.InvalidStateException;
 
 import java.io.ByteArrayOutputStream;
 
@@ -46,7 +45,7 @@ public class HuffmanCompression {
                 } else if (code.charAt(j) == '1') {
                     buffer.write(1);
                 } else {
-                    throw new InvalidStateException("Illegal state: " + code.charAt(i));
+                    throw new IllegalStateException("Illegal state: " + code.charAt(i));
                 }
             }
         }
@@ -70,7 +69,7 @@ public class HuffmanCompression {
                 } else if (encoded[counter] == 1) {
                     x = x.right;
                 } else {
-                    throw new InvalidStateException("Illegal state: " + encoded[i]);
+                    throw new IllegalStateException("Illegal state: " + encoded[i]);
                 }
                 counter++;
             }
