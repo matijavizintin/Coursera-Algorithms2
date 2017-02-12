@@ -118,35 +118,35 @@ public class HuffmanCompression {
         return pq.delMin();
     }
 
-    public Node debugReadTrie(String trie) {
-        return debugReadTrie(trie, 0);
+    public Node unmarshalTrie(String trie) {
+        return unmarshalTrie(trie, 0);
     }
 
-    private Node debugReadTrie(String trie, int pos) {
+    private Node unmarshalTrie(String trie, int pos) {
         if (trie.charAt(pos++) == '1') {
             char c = trie.charAt(pos + 1);
             return new Node(c, 0, null, null);
         }
-        Node left = debugReadTrie(trie, pos);
-        Node right = debugReadTrie(trie, pos);
+        Node left = unmarshalTrie(trie, pos);
+        Node right = unmarshalTrie(trie, pos);
         return new Node('\0', 0, left, right);     // ch is not used for internal nodes
     }
 
-    public String debugWriteTrie() {
+    public String marshalTrie() {
         StringBuilder buffer = new StringBuilder();
-        debugWriteTrie(root, buffer);
+        marshalTrie(root, buffer);
         return buffer.toString();
     }
 
-    private void debugWriteTrie(Node x, StringBuilder buffer) {
+    private void marshalTrie(Node x, StringBuilder buffer) {
         if (x.isLeaf()) {
             buffer.append(1);
             buffer.append(x.ch);
             return;
         }
         buffer.append(0);
-        debugWriteTrie(x.left, buffer);
-        debugWriteTrie(x.right, buffer);
+        marshalTrie(x.left, buffer);
+        marshalTrie(x.right, buffer);
     }
 
     private class Node implements Comparable<Node> {
