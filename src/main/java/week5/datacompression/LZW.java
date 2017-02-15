@@ -2,17 +2,22 @@ package week5.datacompression;
 
 import edu.princeton.cs.algs4.TST;
 
-import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by matijav on 15/02/2017.
  */
 public class LZW {
-    private final int R = 127;      // num of input chars - ASCII
-    private final int L = 256;     // num of codewords - 2^W
-    private final int W = 8;       // codeword width
+    private final int R;      // num of input chars - ASCII
+    private final int L;     // num of codewords - 2^W
 
-    public byte[] compress(String input) {
+    public LZW(int R, int W) {
+        this.R = R;
+        this.L = 1 << W;
+    }
+
+    public List<Integer> compress(String input) {
         TST<Integer> st = new TST<>();
 
         // put all chars to st
@@ -21,10 +26,10 @@ public class LZW {
         }
         int code = R + 1;
 
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        List<Integer> result = new ArrayList<>();
         while (input.length() > 0) {
             String prefix = st.longestPrefixOf(input);
-            os.write(st.get(prefix));       // encode prefix
+            result.add(st.get(prefix));       // encode prefix
 
             int t = prefix.length();
             if (t < input.length() && code < L) {
@@ -33,11 +38,11 @@ public class LZW {
             input = input.substring(t);
         }
 
-        os.write(R);    // EOF
-        return os.toByteArray();
+        result.add(R);    // EOF
+        return result;
     }
 
-    public String expand(byte[] input) {
+    public String expand(List<Integer> input) {
         String[] st = new String[L];
 
         // init with all chars
@@ -49,7 +54,7 @@ public class LZW {
 
         // remember first code for special case
         int pos = 0;
-        int codeword = input[pos++];
+        int codeword = input.get(pos++);
         if (codeword == R) return "";
         String val = st[codeword];
 
@@ -57,7 +62,7 @@ public class LZW {
         while (true) {
             sb.append(val);
 
-            codeword = input[pos++];
+            codeword = input.get(pos++);
             if (codeword == R) {
                 break;
             }

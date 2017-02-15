@@ -49,6 +49,10 @@ public class HuffmanCompression {
                 } else {
                     throw new IllegalStateException("Illegal state: " + code.charAt(i));
                 }
+
+                if (debug) {
+                    debugCount++;
+                }
             }
         }
 
