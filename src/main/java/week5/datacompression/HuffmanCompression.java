@@ -1,4 +1,4 @@
-package week5.datacompression.huffman;
+package week5.datacompression;
 
 import edu.princeton.cs.algs4.MinPQ;
 
@@ -10,6 +10,8 @@ import java.io.ByteArrayOutputStream;
 public class HuffmanCompression {
     private final char R = 256;
     private final char lgR = 8;
+    public boolean debug = false;
+    public int debugCount = 0;
     private Node root;
     private int N;
 
