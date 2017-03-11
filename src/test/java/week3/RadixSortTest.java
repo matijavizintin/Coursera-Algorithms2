@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  * Time: 21:53
  */
 public class RadixSortTest {
-    private final int N = 10 * 1000;
+    private final int N = 100 * 1000;
     private final int W_min = 10;
     private final int W_max = 15;
 
@@ -35,6 +35,15 @@ public class RadixSortTest {
         for (int i : a) {
             System.out.printf("%d ", i);
         }
+    }
+
+    @Test
+    public void keyIndexCountingTest2() {
+        int[] a = new int[]{'A', 'R', 'D', '!', 'R', 'C', 'A', 'A', 'A', 'A', 'B', 'B'};
+        int R = 256;
+
+        new KeyIndexedCounting().sort(a, R);
+
     }
 
     @Test
