@@ -117,6 +117,36 @@ public class GraphBuilder {
         return graph;
     }
 
+    public static Graph buildGraphForHamilton(Class clazz) {
+        Graph graph = instance(clazz, 8);
+
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 4);
+        graph.addEdge(4, 5);
+        graph.addEdge(5, 6);
+        graph.addEdge(6, 7);
+
+        graph.addEdge(7, 6);
+        graph.addEdge(6, 5);
+        graph.addEdge(5, 4);
+        graph.addEdge(4, 3);
+        graph.addEdge(3, 2);
+        graph.addEdge(2, 1);
+        graph.addEdge(1, 0);
+
+        graph.addEdge(1, 7);
+        graph.addEdge(7, 0);
+        graph.addEdge(0, 5);
+        graph.addEdge(5, 2);
+        graph.addEdge(2, 4);
+        graph.addEdge(4, 6);
+        graph.addEdge(6, 3);
+
+        return graph;
+    }
+
     private static <T extends Graph> T instance(Class<T> clazz, int paramter) {
         try {
             return clazz.getConstructor(int.class).newInstance(paramter);
